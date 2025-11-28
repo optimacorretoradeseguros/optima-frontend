@@ -1,0 +1,129 @@
+"use client"
+
+import Link from "next/link"
+import { motion, Variants } from "framer-motion"
+import { ArrowRight, Calendar, Clock } from "lucide-react"
+import SectionHeader from "@/components/section-header"
+
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.3,
+    },
+  },
+}
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { 
+      duration: 0.6, 
+      ease: "easeOut" 
+    },
+  },
+}
+
+export default function BlogPreviewSection() {
+  const blogPosts = [1, 2, 3].map((i) => ({
+    id: i,
+    title: `Artigo do Blog ${i}`,
+    description: "Conteúdo preparado para integração com Hygraph",
+    category: "Seguros",
+    readTime: "5 min de leitura",
+    date: "Nov 2024"
+  }))
+
+  return (
+    <section className="py-20 md:py-28 bg-gradient-to-br from-white via-[#F8F9FA] to-[#DDDED3]/30">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <SectionHeader 
+          title="Do Nosso Blog" 
+          subtitle="Artigos e dicas sobre seguros"
+        />
+
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          {blogPosts.map((post) => (
+            <motion.div
+              key={post.id}
+              variants={itemVariants}
+              whileHover={{ y: -8, transition: { duration: 0.3 } }}
+              className="group"
+            >
+              <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-[#1D285E]/5 hover:border-[#676B49]/20 overflow-hidden h-full">
+                {/* Imagem/Thumbnail */}
+                <div className="relative h-48 bg-gradient-to-br from-[#1D285E] to-[#676B49] overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#1D285E]/80 to-[#676B49]/60" />
+                  <div className="absolute top-4 left-4">
+                    <span className="bg-white/90 text-[#1D285E] text-xs font-medium px-3 py-1 rounded-full">
+                      {post.category}
+                    </span>
+                  </div>
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <div className="flex items-center gap-4 text-white/80 text-xs">
+                      <div className="flex items-center gap-1">
+                        <Calendar className="w-3 h-3" />
+                        {post.date}
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <Clock className="w-3 h-3" />
+                        {post.readTime}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Conteúdo */}
+                <div className="p-6">
+                  <h3 className="font-bold text-[#1D285E] text-lg mb-3 group-hover:text-[#676B49] transition-colors duration-300 line-clamp-2">
+                    {post.title}
+                  </h3>
+                  
+                  <p className="text-[#1D285E]/70 text-sm mb-4 leading-relaxed">
+                    {post.description}
+                  </p>
+
+                  {/* CTA */}
+                  <Link 
+                    href="/blog" 
+                    className="inline-flex items-center gap-2 text-[#676B49] font-semibold text-sm group-hover:gap-3 transition-all duration-300"
+                  >
+                    Ler Artigo Completo
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* CTA Final */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="text-center mt-12"
+        >
+          <Link
+            href="/blog"
+            className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#1D285E] to-[#1D285E]/90 text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 border border-[#1D285E]/40 group"
+          >
+            Explorar Todos os Artigos
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+          </Link>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
