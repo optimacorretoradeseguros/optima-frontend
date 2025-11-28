@@ -56,7 +56,7 @@ export default function BusinessSolutionsSection() {
           {/* Imagem */}
           <motion.div variants={itemVariants} className="relative h-96 lg:h-[500px] rounded-3xl overflow-hidden shadow-2xl">
             <Image
-              src="/business-team-meeting-office.jpg"
+              src="/23.jpg"
               alt="Equipe de negócios em reunião estratégica"
               fill
               className="object-cover"

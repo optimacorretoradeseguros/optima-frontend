@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { useState, useEffect } from "react"
 import { usePathname } from "next/navigation"
 import { Menu, X, Home, Users, Handshake, Building2, User, Heart, FileText, Phone } from "lucide-react"
@@ -89,11 +90,14 @@ export default function Navbar() {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="flex items-center"
           >
-            <Link 
-              href="/" 
-              className="font-bold text-2xl text-[#1D285E] tracking-tight hover:opacity-80 transition-opacity duration-300"
-            >
-              Óptima
+            <Link href="/" className="hover:opacity-80 transition-opacity duration-300">
+              <Image
+                src="/logo-optima 2.png"
+                alt="Óptima Corretora de Seguros"
+                width={180}
+                height={80}
+                className="h-60 w-auto object-contain"
+              />
             </Link>
           </motion.div>
 

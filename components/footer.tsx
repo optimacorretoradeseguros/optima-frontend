@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { Mail, Phone, MapPin } from "lucide-react"
 import { motion, Variants } from "framer-motion"
 
@@ -64,20 +65,26 @@ export default function Footer() {
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
         >
-          {/* Brand */}
-          <motion.div variants={itemVariants}>
-            <motion.h3 
-              className="font-bold text-2xl text-[#1D285E] mb-4 tracking-tight"
-              whileHover={{ scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
-            >
-              Óptima
-            </motion.h3>
-            <p className="text-sm text-[#1D285E]/80 leading-relaxed">
-              A melhor proteção começa com a escolha certa — e com o parceiro certo.
-            </p>
-          </motion.div>
-
+    {/* Brand */}
+<motion.div variants={itemVariants}>
+  <p className="text-sm text-[#1D285E]/80 leading-relaxed mb-4">
+    A melhor proteção começa com a escolha certa — e com o parceiro certo.
+  </p>
+  <motion.div 
+    whileHover={{ scale: 1.02 }}
+    transition={{ type: "spring", stiffness: 400, damping: 10 }}
+  >
+    <Link href="/">
+      <Image
+        src="/logo-optima 2.png"
+        alt="Óptima Corretora de Seguros"
+        width={180}
+        height={80}
+        className="h-60 w-auto object-contain"
+      />
+    </Link>
+  </motion.div>
+</motion.div>
           {/* Navigation Links */}
           <motion.div variants={itemVariants}>
             <h4 className="font-semibold text-[#1D285E] mb-4 text-lg">Navegação</h4>
@@ -140,7 +147,7 @@ export default function Footer() {
                 <div className="p-2 bg-[#1D285E]/5 rounded-lg">
                   <Mail size={16} className="text-[#1D285E]" />
                 </div>
-                <span>info@optima.pt</span>
+                <span>info@optima-seguros.ao</span>
               </motion.li>
               
               <motion.li 
@@ -151,7 +158,7 @@ export default function Footer() {
                 <div className="p-2 bg-[#1D285E]/5 rounded-lg">
                   <Phone size={16} className="text-[#1D285E]" />
                 </div>
-                <span>+351 21 234 5678</span>
+                <span>+244 923 456 678</span>
               </motion.li>
               
               <motion.li 
@@ -162,7 +169,7 @@ export default function Footer() {
                 <div className="p-2 bg-[#1D285E]/5 rounded-lg">
                   <MapPin size={16} className="text-[#1D285E]" />
                 </div>
-                <span>Lisboa, Portugal</span>
+                <span>Luanda, Angola</span>
               </motion.li>
             </ul>
           </motion.div>
@@ -178,6 +185,7 @@ export default function Footer() {
         >
           <p className="text-center text-sm text-[#1D285E]/75">
             © {currentYear} Óptima Corretora de Seguros. Todos os direitos reservados.
+            Website for RC Media
           </p>
         </motion.div>
       </div>

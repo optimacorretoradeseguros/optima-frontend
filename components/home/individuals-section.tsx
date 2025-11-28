@@ -89,7 +89,7 @@ export default function IndividualsSection() {
           {/* Imagem */}
           <motion.div variants={itemVariants} className="relative h-96 lg:h-[500px] rounded-3xl overflow-hidden shadow-2xl order-1 lg:order-2">
             <Image 
-              src="/happy-family-portrait-lifestyle.jpg" 
+              src="/istockphoto-1256558920-612x612.jpg" 
               alt="Família feliz desfrutando de momentos especiais" 
               fill 
               className="object-cover" 

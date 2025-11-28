@@ -94,7 +94,7 @@ export default function HeroSection() {
       {/* Imagem de Fundo com Overlay Sofisticado */}
       <div className="absolute inset-0">
         <Image
-          src="/23.jpg"
+          src="/27.jpg"
           alt="Consultor de seguros profissional em reunião corporativa"
           fill
           className="object-cover opacity-10"
