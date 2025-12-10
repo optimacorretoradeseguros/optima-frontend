@@ -1,18 +1,17 @@
 "use client"
 
-import Link from "next/link"
-import Image from "next/image"
 import { useState, useEffect } from "react"
 import { usePathname } from "next/navigation"
-import { Menu, X, Home, Users, Handshake, Building2, User, Heart, FileText, Phone } from "lucide-react"
+import Link from "next/link"
+import Image from "next/image"
 import { motion, AnimatePresence, Variants } from "framer-motion"
+import { Menu, X, Home, Users, Building2, User, FileText } from "lucide-react"
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
   const [activeItem, setActiveItem] = useState(pathname)
 
-  // Atualiza o item ativo quando a rota muda
   useEffect(() => {
     setActiveItem(pathname)
   }, [pathname])
@@ -29,62 +28,34 @@ export default function Navbar() {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.08,
-        delayChildren: 0.2
-      }
+      transition: { staggerChildren: 0.08, delayChildren: 0.2 }
     }
   }
 
   const itemVariants: Variants = {
     hidden: { opacity: 0, y: -8 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.4,
-        ease: "easeOut"
-      }
-    }
+    visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } }
   }
 
   const mobileMenuVariants: Variants = {
-    closed: {
-      opacity: 0,
-      height: 0,
-      transition: {
-        duration: 0.3,
-        ease: "easeInOut"
-      }
-    },
-    open: {
-      opacity: 1,
-      height: "auto",
-      transition: {
-        duration: 0.4,
-        ease: "easeInOut"
-      }
-    }
+    closed: { opacity: 0, height: 0, transition: { duration: 0.3, ease: "easeInOut" } },
+    open:   { opacity: 1, height: "auto", transition: { duration: 0.4, ease: "easeInOut" } }
   }
 
   const mobileItemVariants: Variants = {
     closed: { opacity: 0, x: -20 },
-    open: { 
-      opacity: 1, 
-      x: 0,
-      transition: {
-        duration: 0.3,
-        ease: "easeOut"
-      }
-    }
+    open:   { opacity: 1, x: 0, transition: { duration: 0.3, ease: "easeOut" } }
   }
 
   return (
-    <nav className="fixed top-0 w-full bg-[#DDDED3] border-b border-[#676B49]/20 backdrop-blur-sm bg-opacity-30 z-50">
+    <nav className="
+        fixed top-0 w-full z-50 bg-white bg-opacity-30 backdrop-blur-sm
+        border-b border-white/20 shadow-sm
+      ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
@@ -92,35 +63,35 @@ export default function Navbar() {
           >
             <Link href="/" className="hover:opacity-80 transition-opacity duration-300">
               <Image
-                src="/logo-optima 2.png"
+                src="/logo-optima3.jpeg"
                 alt="Óptima Corretora de Seguros"
-                width={180}
+                width={160}
                 height={80}
-                className="h-60 w-auto object-contain"
+                className="h-19 w-auto object-contain"
               />
             </Link>
           </motion.div>
 
-          {/* Desktop Navigation */}
-          <motion.div 
+          {/* Desktop nav */}
+          <motion.div
             className="hidden lg:flex items-center space-x-1"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
           >
-            {navItems.map((item) => {
-              const IconComponent = item.icon
+            {navItems.map(item => {
+              const Icon = item.icon
               return (
                 <motion.div key={item.href} variants={itemVariants}>
                   <Link
                     href={item.href}
                     className={`relative flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 ${
-                      activeItem === item.href 
-                        ? "text-[#1D285E]" 
+                      activeItem === item.href
+                        ? "text-[#1D285E]"
                         : "text-[#1D285E]/80 hover:text-[#1D285E]"
                     }`}
                   >
-                    <IconComponent size={16} className="text-[#1D285E]/60" />
+                    <Icon size={16} className="text-[#1D285E]/60" />
                     {item.label}
                     {activeItem === item.href && (
                       <motion.div
@@ -136,18 +107,14 @@ export default function Navbar() {
             })}
           </motion.div>
 
-          {/* Desktop CTA Buttons */}
-          <motion.div 
+          {/* Desktop buttons */}
+          <motion.div
             className="hidden lg:flex items-center gap-3"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
           >
-            {/* Botão Simulação */}
-            <motion.div 
-              whileHover={{ scale: 1.02 }} 
-              whileTap={{ scale: 0.98 }}
-            >
+            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
               <Link
                 href="/simulation"
                 className="px-6 py-3 rounded-full text-sm font-semibold text-[#DDDED3] bg-[#676B49] hover:bg-[#676B49]/90 transition-all duration-300 shadow-md hover:shadow-lg border border-[#676B49]/20 hover:border-[#676B49]/30"
@@ -155,12 +122,7 @@ export default function Navbar() {
                 Simulação
               </Link>
             </motion.div>
-
-            {/* Botão Contactar */}
-            <motion.div 
-              whileHover={{ scale: 1.02 }} 
-              whileTap={{ scale: 0.98 }}
-            >
+            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
               <Link
                 href="/contact"
                 className="px-6 py-3 rounded-full text-sm font-semibold text-[#DDDED3] bg-[#1D285E] hover:bg-[#1D285E]/90 transition-all duration-300 shadow-md hover:shadow-lg border border-[#1D285E]/20 hover:border-[#1D285E]/30"
@@ -170,7 +132,7 @@ export default function Navbar() {
             </motion.div>
           </motion.div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile menu button */}
           <motion.button
             className="lg:hidden p-3 rounded-lg text-[#1D285E] hover:bg-[#1D285E]/5 transition-colors duration-300"
             onClick={() => setIsOpen(!isOpen)}
@@ -178,16 +140,13 @@ export default function Navbar() {
             whileTap={{ scale: 0.95 }}
             aria-label="Menu"
           >
-            <motion.div
-              animate={{ rotate: isOpen ? 90 : 0 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-            >
+            <motion.div animate={{ rotate: isOpen ? 90 : 0 }} transition={{ duration: 0.3, ease: "easeInOut" }}>
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </motion.div>
           </motion.button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile menu */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
@@ -198,17 +157,10 @@ export default function Navbar() {
               className="lg:hidden border-t border-[#676B49]/10 bg-[#DDDED3]/30 backdrop-blur-sm"
             >
               <div className="py-4 space-y-1">
-                {navItems.map((item, index) => {
-                  const IconComponent = item.icon
+                {navItems.map((item, idx) => {
+                  const Icon = item.icon
                   return (
-                    <motion.div
-                      key={item.href}
-                      variants={mobileItemVariants}
-                      initial="closed"
-                      animate="open"
-                      exit="closed"
-                      transition={{ delay: index * 0.05 }}
-                    >
+                    <motion.div key={item.href} variants={mobileItemVariants} initial="closed" animate="open" exit="closed" transition={{ delay: idx * 0.05 }}>
                       <Link
                         href={item.href}
                         className={`flex items-center gap-3 px-6 py-3 text-base font-medium transition-all duration-300 ${
@@ -218,21 +170,14 @@ export default function Navbar() {
                         }`}
                         onClick={() => setIsOpen(false)}
                       >
-                        <IconComponent size={18} className="text-[#1D285E]/60" />
+                        <Icon size={18} className="text-[#1D285E]/60" />
                         {item.label}
                       </Link>
                     </motion.div>
                   )
                 })}
                 <div className="px-6 pt-4 pb-2 border-t border-[#676B49]/10 space-y-3">
-                  {/* Botão Simulação Mobile */}
-                  <motion.div
-                    variants={mobileItemVariants}
-                    initial="closed"
-                    animate="open"
-                    exit="closed"
-                    transition={{ delay: navItems.length * 0.05 }}
-                  >
+                  <motion.div variants={mobileItemVariants} initial="closed" animate="open" exit="closed" transition={{ delay: navItems.length * 0.05 }}>
                     <Link
                       href="/simulation"
                       className="block w-full px-4 py-4 rounded-full text-center text-sm font-semibold text-[#DDDED3] bg-[#676B49] hover:bg-[#676B49]/90 transition-all duration-300 shadow-md hover:shadow-lg border border-[#676B49]/20"
@@ -241,15 +186,7 @@ export default function Navbar() {
                       Simulação
                     </Link>
                   </motion.div>
-
-                  {/* Botão Contactar Mobile */}
-                  <motion.div
-                    variants={mobileItemVariants}
-                    initial="closed"
-                    animate="open"
-                    exit="closed"
-                    transition={{ delay: (navItems.length + 1) * 0.05 }}
-                  >
+                  <motion.div variants={mobileItemVariants} initial="closed" animate="open" exit="closed" transition={{ delay: (navItems.length + 1) * 0.05 }}>
                     <Link
                       href="/contact"
                       className="block w-full px-4 py-4 rounded-full text-center text-sm font-semibold text-[#DDDED3] bg-[#1D285E] hover:bg-[#1D285E]/90 transition-all duration-300 shadow-md hover:shadow-lg border border-[#1D285E]/20"

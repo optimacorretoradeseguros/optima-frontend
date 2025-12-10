@@ -115,6 +115,36 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+/* 🌟 AQUI ENTRA O EFEITO DO ÍCONE COM GLOW */
+@layer components {
+  .icon-glow {
+    position: relative;
+  }
+
+  .icon-glow::after {
+    content: "";
+    position: absolute;
+    inset: -12px;
+    border-radius: 9999px;
+    background: radial-gradient(
+      rgba(29, 40, 94, 0.28),
+      rgba(29, 40, 94, 0.12) 60%,
+      transparent 90%
+    );
+    z-index: -1;
+    transition: 0.3s ease;
+  }
+
+  .icon-glow:hover::after {
+    inset: -16px;
+    background: radial-gradient(
+      rgba(29, 40, 94, 0.40),
+      rgba(29, 40, 94, 0.18) 60%,
+      transparent 92%
+    );
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -122,4 +152,4 @@
   body {
     @apply bg-background text-foreground;
   }
-}
+} 

@@ -38,35 +38,25 @@ const textVariants: Variants = {
 export default function IndividualsPage() {
   return (
     <div className="w-full pt-16">
-      {/* Hero Section - IDÊNTICO à Home */}
-      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#1D285E]/98 via-[#1D285E]/95 to-[#676B49]/90">
-        {/* Background Pattern Elegante */}
+      {/* Hero Section - SEM GRADIENTES */}
+      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden bg-[#1D285E]">
+        {/* Background Pattern */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#1D285E] via-[#1D285E]/95 to-[#676B49]/85" />
+          <div className="absolute inset-0 bg-[#1D285E]" />
           <div className="absolute top-1/4 -left-10 w-72 h-72 bg-[#676B49]/10 rounded-full blur-3xl" />
           <div className="absolute bottom-1/4 -right-10 w-96 h-96 bg-[#1D285E]/20 rounded-full blur-3xl" />
-          <div 
-            className="absolute inset-0 opacity-[0.02]"
-            style={{
-              backgroundImage: `
-                linear-gradient(90deg, #DDDED3 1px, transparent 1px),
-                linear-gradient(180deg, #DDDED3 1px, transparent 1px)
-              `,
-              backgroundSize: '50px 50px'
-            }}
-          />
         </div>
 
         {/* Imagem de Fundo com Overlay */}
         <div className="absolute inset-0">
           <Image
-                src="/placeholder.svg?key=personal-protection"
-                alt="Proteção para particulares"
-                fill
-                className="object-cover opacity-10"
-                priority
-              />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#1D285E]/70 via-[#1D285E]/40 to-transparent" />
+            src="/24.jpeg"
+            alt="Proteção para particulares"
+            fill
+            className="object-cover opacity-30"
+            priority
+          />
+          <div className="absolute inset-0 bg-[#1D285E]/70" />
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
@@ -76,7 +66,7 @@ export default function IndividualsPage() {
             animate="visible"
             variants={containerVariants}
           >
-            {/* Badge de Destaque - IDÊNTICO à Home */}
+            {/* Badge de Destaque */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -85,25 +75,25 @@ export default function IndividualsPage() {
             >
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-[#676B49] rounded-full animate-pulse" />
-                <span className="text-sm font-medium text-[#DDDED3] tracking-wider uppercase">
-                  Proteção Pessoal Premium
+                <span className="text-sm font-medium text-[#ffffff] tracking-wider uppercase">
+                  Proteção Pessoal
                 </span>
               </div>
             </motion.div>
 
-            {/* Título Principal - IDÊNTICO à Home */}
+            {/* Título Principal */}
             <motion.h1 
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#DDDED3] leading-tight tracking-tight"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#ffffff] leading-tight tracking-tight"
               variants={textVariants}
             >
               Proteção para{" "}
-              <span className="bg-gradient-to-r from-[#DDDED3] via-[#DDDED3] to-[#676B49] bg-clip-text text-transparent">
+              <span className="text-white">
                 Particulares
               </span>
             </motion.h1>
             
             <motion.p
-              className="text-xl lg:text-2xl text-[#DDDED3]/80 leading-relaxed font-light"
+              className="text-xl lg:text-2xl text-[#ffffff]/80 leading-relaxed font-light"
               variants={textVariants}
             >
               Seguros personalizados para cada etapa da sua vida e todas as suas necessidades
@@ -121,7 +111,7 @@ export default function IndividualsPage() {
                   href="/simulation"
                   className="group relative flex items-center justify-center px-8 py-4 rounded-full font-semibold overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500"
                 >
-                  <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-[#676B49] to-[#676B49]/90 transition-opacity duration-300" />
+                  <div className="absolute inset-0 w-full h-full bg-[#676B49] transition-opacity duration-300" />
                   <div className="absolute inset-0 w-full h-full pointer-events-none bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-1000" />
                   <div className="absolute inset-0 w-full h-full pointer-events-none bg-[#676B49]/70 opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
 
@@ -136,8 +126,8 @@ export default function IndividualsPage() {
         </div>
       </section>
 
-      {/* Tipos de Seguros - Cards IDÊNTICOS à Home */}
-      <section className="py-20 md:py-28 bg-gradient-to-br from-white via-[#F8F9FA] to-[#DDDED3]/30">
+      {/* Tipos de Seguros */}
+      <section className="py-20 md:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader 
             title="Tipos de Seguros" 
@@ -208,7 +198,7 @@ export default function IndividualsPage() {
                 className="group"
               >
                 <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-[#1D285E]/5 hover:border-[#676B49]/20 h-full">
-                  <div className="w-16 h-16 bg-gradient-to-br from-[#1D285E] to-[#676B49] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                  <div className="w-16 h-16 bg-[#1D285E] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                     <insurance.icon className="w-8 h-8 text-white" />
                   </div>
 
@@ -220,7 +210,7 @@ export default function IndividualsPage() {
                     {insurance.description}
                   </p>
 
-                  {/* Features - Estilo IDÊNTICO à Home */}
+                  {/* Features */}
                   <ul className="space-y-2 mb-6">
                     {insurance.features.map((feature, idx) => (
                       <li key={idx} className="flex items-center gap-2 text-sm text-[#1D285E]/60">
@@ -230,7 +220,7 @@ export default function IndividualsPage() {
                     ))}
                   </ul>
 
-                  {/* CTA Sutil - Estilo Home */}
+                  {/* CTA Sutil */}
                   <div className="flex items-center gap-2 text-[#676B49] font-semibold text-sm group-hover:gap-3 transition-all duration-300 cursor-pointer">
                     Saber mais
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
@@ -242,8 +232,8 @@ export default function IndividualsPage() {
         </div>
       </section>
 
-      {/* Fases da Vida - Layout imagem + texto IDÊNTICO à Home */}
-      <section className="py-20 md:py-28 bg-gradient-to-br from-[#1D285E]/5 via-[#1D285E]/3 to-white">
+      {/* Fases da Vida */}
+      <section className="py-20 md:py-28 bg-[#F8F9FA]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader 
             title="Proteção Conforme a Vida Evolui" 
@@ -257,7 +247,7 @@ export default function IndividualsPage() {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
           >
-            {/* Imagem - Estilo Home */}
+            {/* Imagem */}
             <motion.div variants={itemVariants} className="relative h-96 lg:h-[500px] rounded-3xl overflow-hidden shadow-2xl">
               <Image
                 src="/placeholder.svg?key=life-stages"
@@ -265,18 +255,18 @@ export default function IndividualsPage() {
                 fill
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#1D285E]/20 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-[#1D285E]/20" />
               
-              {/* Badge na Imagem - Estilo Home */}
+              {/* Badge na Imagem */}
               <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-sm rounded-2xl px-4 py-3 shadow-lg">
                 <p className="text-sm font-semibold text-[#1D285E]">Para Todas as Idades</p>
                 <p className="text-xs text-[#676B49]">Proteção Adaptada</p>
               </div>
             </motion.div>
 
-            {/* Conteúdo - Estilo Home */}
+            {/* Conteúdo */}
             <motion.div variants={itemVariants} className="space-y-8">
-              {/* Lista de Fases - Estilo Home */}
+              {/* Lista de Fases */}
               <ul className="space-y-4">
                 {[
                   {
@@ -300,7 +290,7 @@ export default function IndividualsPage() {
                     className="flex items-center gap-4 p-4 rounded-2xl bg-white/50 hover:bg-white/80 transition-all duration-300 group cursor-pointer border border-transparent hover:border-[#676B49]/10"
                     whileHover={{ x: 8 }}
                   >
-                    <div className="w-10 h-10 bg-gradient-to-br from-[#676B49] to-[#676B49]/90 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-10 h-10 bg-[#676B49] rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                       <Heart className="w-5 h-5 text-white" />
                     </div>
                     <div className="flex-1">
@@ -319,15 +309,13 @@ export default function IndividualsPage() {
                   </motion.div>
                 ))}
               </ul>
-
-              {/* CTA REMOVIDO - Botão "Conhecer Todas as Opções" foi removido */}
             </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Porque Escolher - Cards IDÊNTICOS à Home */}
-      <section className="py-20 md:py-28 bg-gradient-to-br from-white via-[#F8F9FA] to-[#DDDED3]/40">
+      {/* Porque Escolher */}
+      <section className="py-20 md:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader 
             title="Porque Confiar em Nós" 
@@ -365,7 +353,7 @@ export default function IndividualsPage() {
                 className="group"
               >
                 <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-[#1D285E]/5 hover:border-[#676B49]/20 h-full">
-                  <div className="w-16 h-16 bg-gradient-to-br from-[#1D285E] to-[#676B49] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                  <div className="w-16 h-16 bg-[#1D285E] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                     <benefit.icon className="w-8 h-8 text-white" />
                   </div>
 
@@ -377,8 +365,8 @@ export default function IndividualsPage() {
                     {benefit.description}
                   </p>
 
-                  {/* Linha decorativa - Estilo Home */}
-                  <div className="w-12 h-1 bg-gradient-to-r from-[#1D285E] to-[#676B49] rounded-full mt-6 group-hover:w-16 transition-all duration-300" />
+                  {/* Linha decorativa */}
+                  <div className="w-12 h-1 bg-[#1D285E] rounded-full mt-6 group-hover:w-16 transition-all duration-300" />
                 </div>
               </motion.div>
             ))}
@@ -386,25 +374,13 @@ export default function IndividualsPage() {
         </div>
       </section>
 
-      {/* CTA Final - IDÊNTICO à Home */}
-      <section className="py-20 md:py-28 bg-gradient-to-br from-[#1D285E] via-[#1D285E]/95 to-[#676B49]/90 relative overflow-hidden">
+      {/* CTA Final - SEM GRADIENTES */}
+      <section className="py-20 md:py-28 bg-[#1D285E] relative overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0">
           <div className="absolute top-10 left-10 w-4 h-4 bg-white/20 rounded-full animate-pulse" />
           <div className="absolute bottom-20 right-20 w-6 h-6 bg-white/10 rounded-full animate-bounce" />
           <div className="absolute top-1/2 left-1/4 w-2 h-2 bg-white/30 rounded-full animate-ping" />
-          
-          {/* Subtle Pattern */}
-          <div 
-            className="absolute inset-0 opacity-[0.03]"
-            style={{
-              backgroundImage: `
-                linear-gradient(90deg, #DDDED3 1px, transparent 1px),
-                linear-gradient(180deg, #DDDED3 1px, transparent 1px)
-              `,
-              backgroundSize: '40px 40px'
-            }}
-          />
         </div>
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
@@ -432,7 +408,7 @@ export default function IndividualsPage() {
             <div className="space-y-6">
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
                 Comece sua{" "}
-                <span className="bg-gradient-to-r from-white to-[#DDDED3] bg-clip-text text-transparent">
+                <span className="text-white">
                   proteção
                 </span>{" "}
                 hoje?
@@ -456,7 +432,7 @@ export default function IndividualsPage() {
                 whileTap={{ scale: 0.95 }}
                 className="group relative inline-flex items-center gap-3 px-8 py-4 bg-white text-[#1D285E] rounded-full font-semibold shadow-2xl hover:shadow-3xl transition-all duration-300 border border-white/20 overflow-hidden"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#1D285E]/5 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                <div className="absolute inset-0 bg-[#1D285E]/5 -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
                 <Car className="w-5 h-5 relative" />
                 <span className="relative">Fazer Simulação Gratuita</span>
               </motion.a>

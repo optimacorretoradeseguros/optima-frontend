@@ -32,3 +32,12 @@ export default function ServiceCard({ icon: Icon, title, description, delay = 0 
     </motion.div>
   )
 }
+
+interface ButtonProps {
+  titulo: string
+}
+export function Button ({titulo}: ButtonProps){
+  return (
+    <h1>{titulo} </h1>
+  )
+} 

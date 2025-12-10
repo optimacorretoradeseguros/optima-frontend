@@ -64,7 +64,7 @@ export default function BusinessSolutionsSection() {
             <div className="absolute inset-0 bg-gradient-to-t from-[#1D285E]/20 via-transparent to-transparent" />
             
             {/* Badge na Imagem */}
-            <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-sm rounded-2xl px-4 py-3 shadow-lg">
+            <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-sm rounded-full px-4 py-3 shadow-lg">
               <p className="text-sm font-semibold text-[#1D285E]">+500 Empresas</p>
               <p className="text-xs text-[#676B49]">Protegidas</p>
             </div>
@@ -72,17 +72,19 @@ export default function BusinessSolutionsSection() {
 
           {/* Conteúdo */}
           <motion.div variants={itemVariants} className="space-y-8">
+
             {/* Lista de Soluções */}
             <ul className="space-y-4">
-              {solutions.map((item, index) => (
+              {solutions.map((item) => (
                 <motion.li 
                   key={item} 
-                  className="flex items-center gap-4 p-4 rounded-2xl bg-white/50 hover:bg-white/80 transition-all duration-300 group cursor-pointer border border-transparent hover:border-[#1D285E]/10"
+                  className="flex items-center gap-4 p-4 rounded-full bg-white/50 hover:bg-white/80 transition-all duration-300 group cursor-pointer border border-transparent hover:border-[#1D285E]/10"
                   whileHover={{ x: 8 }}
                 >
-                  <div className="w-10 h-10 bg-gradient-to-br from-[#1D285E] to-[#676B49] rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-10 h-10 bg-[#1D285E] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <CheckCircle2 className="w-5 h-5 text-white" />
                   </div>
+
                   <span className="text-lg font-medium text-[#1D285E] group-hover:text-[#676B49] transition-colors duration-300">
                     {item}
                   </span>
@@ -96,11 +98,11 @@ export default function BusinessSolutionsSection() {
                 href="/services/companies"
                 className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#1D285E] to-[#1D285E]/90 text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 border border-[#1D285E]/40 group"
               >
-                
                 Explorar Soluções Empresariais
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
               </Link>
             </motion.div>
+
           </motion.div>
         </motion.div>
       </div>

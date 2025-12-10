@@ -60,10 +60,10 @@ export default function BlogPreviewSection() {
               whileHover={{ y: -8, transition: { duration: 0.3 } }}
               className="group"
             >
-              <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-[#1D285E]/5 hover:border-[#676B49]/20 overflow-hidden h-full">
+              <div className="bg-white rounded-4xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-[#1D285E]/5 hover:border-[#676B49]/20 overflow-hidden h-full">
                 {/* Imagem/Thumbnail */}
-                <div className="relative h-48 bg-gradient-to-br from-[#1D285E] to-[#676B49] overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#1D285E]/80 to-[#676B49]/60" />
+                <div className="relative h-48 bg-[#1D285E]">
+                  <div className="absolute inset-0 bg-[#1D285E]" />
                   <div className="absolute top-4 left-4">
                     <span className="bg-white/90 text-[#1D285E] text-xs font-medium px-3 py-1 rounded-full">
                       {post.category}

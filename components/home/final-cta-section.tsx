@@ -6,7 +6,7 @@ import { Calendar, Phone, Star } from "lucide-react"
 
 export default function FinalCTASection() {
   return (
-    <section className="py-20 md:py-28 bg-gradient-to-br from-[#1D285E] via-[#1D285E]/95 to-[#676B49]/90 relative overflow-hidden">
+    <section className="py-20 md:py-28 bg-gradient-to-br from-white via-[#1D285E] to-[#DDDED3]/40">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-10 left-10 w-4 h-4 bg-white/20 rounded-full animate-pulse" />
@@ -51,7 +51,7 @@ export default function FinalCTASection() {
           <div className="space-y-6">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
               Pronto para proteger o que é{" "}
-              <span className="bg-gradient-to-r from-white to-[#DDDED3] bg-clip-text text-transparent">
+              <span className="bg-[#DDDED3] bg-clip-text">
                 importante
               </span>
               ?

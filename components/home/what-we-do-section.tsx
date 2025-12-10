@@ -20,10 +20,7 @@ const cardVariants: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { 
-      duration: 0.6, 
-      ease: "easeOut" 
-    },
+    transition: { duration: 0.6, ease: "easeOut" },
   },
 }
 
@@ -52,6 +49,7 @@ export default function WhatWeDoSection() {
   return (
     <section className="py-20 md:py-28 bg-gradient-to-br from-white via-[#F8F9FA] to-[#DDDED3]/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
         <SectionHeader
           title="O que Fazemos"
           subtitle="Simplificamos a complexidade do mercado de seguros para você"
@@ -72,16 +70,79 @@ export default function WhatWeDoSection() {
               className="group"
             >
               <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-[#1D285E]/5 hover:border-[#676B49]/20 h-full">
-                {/* Ícone */}
-                <div className="w-16 h-16 bg-gradient-to-br from-[#1D285E] to-[#676B49] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                  <service.icon className="w-8 h-8 text-white" />
+
+                {/* ============================= */}
+                {/* ÍCONE COM ANÉIS MAIORES */}
+                {/* ============================= */}
+
+                <div className="relative mb-6 flex items-center justify-center">
+
+                  {/* Glow maior */}
+                  <div className="
+                    absolute inset-0 rounded-full 
+                    bg-[#1D285E]/25
+                    scale-[1.9] 
+                    blur-3xl 
+                    opacity-50
+                    transition-all duration-500
+                    group-hover:opacity-80
+                  " />
+
+                  {/* Anel 1 */}
+                  <div className="
+                    absolute inset-0 rounded-full
+                    border border-white/25
+                    scale-[1.55]
+                    blur-[2px]
+                    opacity-70
+                    transition-all duration-500
+                    group-hover:opacity-100
+                  " />
+
+                  {/* Anel 2 */}
+                  <div className="
+                    absolute inset-0 rounded-full
+                    border border-[#1D285E]/30
+                    scale-[1.8]
+                    blur-sm
+                    opacity-50
+                  " />
+
+                  {/* Anel 3 (extra grande) */}
+                  <div className="
+                    absolute inset-0 rounded-full
+                    border border-[#1D285E]/20
+                    scale-[2.1]
+                    blur-md
+                    opacity-40
+                  " />
+
+                  {/* Pulsação */}
+                  <motion.div
+                    className="absolute inset-0 rounded-full scale-[1.9] bg-[#1D285E]/15 blur-2xl"
+                    animate={{ opacity: [0.25, 0.8, 0.25] }}
+                    transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+                  />
+
+                  {/* Ícone principal */}
+                  <div className="
+                    relative w-16 h-16 
+                    bg-[#1D285E] rounded-full 
+                    flex items-center justify-center 
+                    shadow-2xl
+                    transition-transform duration-300
+                    group-hover:scale-110
+                  ">
+                    <service.icon className="w-8 h-8 text-white" />
+                  </div>
+
                 </div>
 
                 {/* Conteúdo */}
                 <h3 className="text-xl font-bold text-[#1D285E] mb-4 group-hover:text-[#676B49] transition-colors duration-300">
                   {service.title}
                 </h3>
-                
+
                 <p className="text-[#1D285E]/70 leading-relaxed mb-6">
                   {service.description}
                 </p>
@@ -96,15 +157,17 @@ export default function WhatWeDoSection() {
                   ))}
                 </ul>
 
-                {/* CTA Sutil */}
+                {/* CTA */}
                 <div className="flex items-center gap-2 text-[#676B49] font-semibold text-sm group-hover:gap-3 transition-all duration-300 cursor-pointer">
                   Saber mais
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                 </div>
+
               </div>
             </motion.div>
           ))}
         </motion.div>
+
       </div>
     </section>
   )
