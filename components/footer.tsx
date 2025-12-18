@@ -77,7 +77,7 @@ export default function Footer() {
             >
               <Link href="/">
                 <Image
-                  src="/logo11.png"
+                  src="/optima2.png"
                   alt="Óptima Corretora de Seguros"
                   width={180}
                   height={80}
@@ -118,7 +118,6 @@ export default function Footer() {
               {[{ label: "Mediação", href: "/services/mediation" },
                 { label: "Empresas", href: "/services/companies" },
                 { label: "Particulares", href: "/services/individuals" },
-                { label: "Parceiros", href: "/partners" }
               ].map((item) => (
                 <li key={item.href}>
                   <motion.div whileHover={{ x: 4 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}>
@@ -143,14 +142,20 @@ export default function Footer() {
                 <div className="p-2 bg-[#283373] rounded-lg">
                   <Mail size={16} className="text-white" />
                 </div>
-                <span>info@optima-seguros.ao</span>
+                <span>geral@optima.co.ao</span>
               </motion.li>
               
-              <motion.li className="flex items-center gap-3 text-white/70 hover:text-white transition-colors duration-300" whileHover={{ x: 4 }}>
-                <div className="p-2 bg-[#283373] rounded-lg">
-                  <Phone size={16} className="text-white" />
+              {/* Telefones com mesmo tamanho */}
+              <motion.li className="space-y-2" whileHover={{ x: 4 }}>
+                <div className="flex items-start gap-3">
+                  <div className="p-2 bg-[#283373] rounded-lg">
+                    <Phone size={16} className="text-white" />
+                  </div>
+                  <div className="flex flex-col space-y-2">
+                    <span className="text-white/70 hover:text-white transition-colors duration-300">+244 933 040 182</span>
+                    <span className="text-white/70 hover:text-white transition-colors duration-300">+244 933 043 525</span>
+                  </div>
                 </div>
-                <span>+244 923 456 678</span>
               </motion.li>
               
               <motion.li className="flex items-center gap-3 text-white/70 hover:text-white transition-colors duration-300" whileHover={{ x: 4 }}>
@@ -166,7 +171,9 @@ export default function Footer() {
         {/* Bottom Bar */}
         <motion.div className="border-t border-[#283373] mt-12 pt-8" variants={bottomBarVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
           <p className="text-center text-sm text-white/70">
-            © {currentYear} Óptima Corretora de Seguros. Todos os direitos reservados. Website for RC Media
+            © {currentYear} Óptima Corretora de Seguros. Todos os direitos reservados.
+            <br />
+            Website for RC Media
           </p>
         </motion.div>
       </div>

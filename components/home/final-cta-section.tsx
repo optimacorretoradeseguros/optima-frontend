@@ -43,7 +43,7 @@ export default function FinalCTASection() {
           >
             <Star className="w-4 h-4 text-white" />
             <span className="text-white text-sm font-medium tracking-wide">
-              Comece Agora Sem Compromisso
+              Comece Agora Seu Compromisso
             </span>
           </motion.div>
 
@@ -71,11 +71,11 @@ export default function FinalCTASection() {
           >
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-[#DDDED3] rounded-full" />
-              Consultoria Gratuita
+              Consultoria 
             </div>
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-[#DDDED3] rounded-full" />
-              Sem Compromisso
+              Compromisso
             </div>
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-[#DDDED3] rounded-full" />
@@ -93,13 +93,13 @@ export default function FinalCTASection() {
             {/* Primary CTA */}
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
-                href="/contact"
+                href="/simulation"
                 className="group relative inline-flex items-center gap-3 px-8 py-4 bg-white text-[#1D285E] rounded-full font-semibold shadow-2xl hover:shadow-3xl transition-all duration-300 border border-white/20 overflow-hidden"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#1D285E]/5 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
                 
                 <Calendar className="w-5 h-5 relative" />
-                <span className="relative">Agendar Consulta Gratuita</span>
+                <span className="relative">Solicite a Sua Cotaçao</span>
               
               </Link>
             </motion.div>

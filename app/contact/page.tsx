@@ -93,7 +93,7 @@ export default function ContactPage() {
   return (
     <div className="w-full pt-16">
       {/* Hero */}
-      <section className="py-12 md:py-20 bg-[#e6ebdd]">
+      <section className="py-12 md:py-20 bg-[rgb(230,235,221)]">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div 
             initial={{ opacity: 0, y: 20 }} 
@@ -225,7 +225,6 @@ export default function ContactPage() {
                       className="w-full px-4 py-3 border border-gray-300 rounded-full bg-white focus:border-[#676B49] focus:ring-2 focus:ring-[#676B49]/20 focus:outline-none transition"
                     >
                       <option value="">Selecione um assunto</option>
-                      <option value="simulacao">Simulação de Seguro</option>
                       <option value="informacao">Informação Geral</option>
                       <option value="suporte">Suporte Técnico</option>
                       <option value="parceria">Parcerias</option>
@@ -294,10 +293,10 @@ export default function ContactPage() {
                   <h3 className="text-xl font-bold text-[#1D285E] mb-3">Email</h3>
                   <p className="text-[#1D285E]/70 mb-4">Enviamos resposta em até 24 horas</p>
                   <a
-                    href="mailto:info@optima-seguros.ao"
+                    href="mailto:geral@optima.co.ao"
                     className="inline-block text-[#676B49] font-semibold hover:opacity-70 transition-opacity"
                   >
-                    info@optima-seguros.ao
+                    geral@optima.co.ao
                   </a>
                 </motion.div>
 
@@ -311,12 +310,20 @@ export default function ContactPage() {
                   </div>
                   <h3 className="text-xl font-bold text-[#1D285E] mb-3">Telefone</h3>
                   <p className="text-[#1D285E]/70 mb-4">Disponível de segunda a sexta</p>
-                  <a
-                    href="tel:+244933040182"
-                    className="inline-block text-[#676B49] font-semibold hover:opacity-70 transition-opacity"
-                  >
-                    +244 933 040 182
-                  </a>
+                  <div className="space-y-2">
+                    <a
+                      href="tel:+244933040182"
+                      className="block text-[#676B49] font-semibold hover:opacity-70 transition-opacity"
+                    >
+                      +244 933 040 182
+                    </a>
+                    <a
+                      href="tel:+244933043525"
+                      className="block text-[#676B49] font-semibold hover:opacity-70 transition-opacity"
+                    >
+                      +244 933 043 525
+                    </a>
+                  </div>
                 </motion.div>
               </motion.div>
 
@@ -336,7 +343,7 @@ export default function ContactPage() {
                     <h3 className="text-xl font-bold text-[#1D285E] mb-2">Localização</h3>
                     <p className="text-[#1D285E]/70 mb-4">Visite-nos em Luanda </p>
                     <address className="not-italic text-[#1D285E]">
-                      <p className="font-semibold text-[#676B49]">Edifício 154, R. Cmte. Kwenha</p>
+                      <p className="font-semibold text-[#676B49]">Rua Comandante Kwenha, Edifício 154, 3º Andar </p>
                     </address>
                   </div>
                 </div>
@@ -418,22 +425,23 @@ export default function ContactPage() {
                 href="/simulation"
                 className="px-8 py-3 bg-white text-[#1D285E] rounded-full font-semibold hover:bg-[#DDDED3] transition-colors"
               >
-                Fazer Simulação
+                Solicitar Cotação
               </Link>
               <a
-                href="https://wa.me/933040182"
+                href="https://wa.me/244933043525"
                 target="_blank"
                 rel="noopener noreferrer"
-               
-
                 className="px-8 py-3 bg-white/20 text-white rounded-full font-semibold hover:bg-white/30 transition-colors border border-white"
               >
                 WhatsApp
               </a>
             </div>
+            <p className="text-white/60 text-sm mt-4">
+              
+            </p>
           </motion.div>
         </div>
       </section>
     </div>
   )
-} 
+}

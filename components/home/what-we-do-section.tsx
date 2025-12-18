@@ -1,7 +1,7 @@
 "use client"
 
 import { motion, Variants } from "framer-motion"
-import { Users, TrendingUp, Shield, ArrowRight } from "lucide-react"
+import { Users, TrendingUp, Shield } from "lucide-react"
 import SectionHeader from "@/components/section-header"
 
 const containerVariants: Variants = {
@@ -148,7 +148,7 @@ export default function WhatWeDoSection() {
                 </p>
 
                 {/* Features */}
-                <ul className="space-y-2 mb-6">
+                <ul className="space-y-2">
                   {service.features.map((feature, idx) => (
                     <li key={idx} className="flex items-center gap-2 text-sm text-[#1D285E]/60">
                       <div className="w-1.5 h-1.5 bg-[#676B49] rounded-full" />
@@ -156,12 +156,6 @@ export default function WhatWeDoSection() {
                     </li>
                   ))}
                 </ul>
-
-                {/* CTA */}
-                <div className="flex items-center gap-2 text-[#676B49] font-semibold text-sm group-hover:gap-3 transition-all duration-300 cursor-pointer">
-                  Saber mais
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                </div>
 
               </div>
             </motion.div>

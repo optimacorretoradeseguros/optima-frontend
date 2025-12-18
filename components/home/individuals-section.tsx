@@ -8,9 +8,12 @@ import {
   ArrowRight,
   Car,
   Stethoscope,
-  HeartPulse,
   Plane,
-  Home
+  Home,
+  Shield,
+  Flame,
+  ShieldCheck,
+  UserCheck
 } from "lucide-react"
 import SectionHeader from "@/components/section-header"
 
@@ -39,11 +42,13 @@ const itemVariants: Variants = {
 
 export default function IndividualsSection() {
   const protections = [
-    { label: "Seguro de Automóvel", icon: Car },
     { label: "Seguro de Saúde", icon: Stethoscope },
-    { label: "Seguro de Vida", icon: HeartPulse },
     { label: "Seguro de Viagem", icon: Plane },
-    { label: "Proteção Residencial", icon: Home },
+    { label: "Seguro Multirisco Habitação", icon: Home },
+    { label: "Seguro Multirisco Incêndio", icon: Flame },
+    { label: "Seguro de Responsabilidade Civil (Automóvel)", icon: Car },
+    { label: "Seguro Contra Todos os Riscos (Automóvel)", icon: ShieldCheck },
+    { label: "Seguro de Acidente de Trabalho e Doenças Profissionais", icon: UserCheck },
   ]
 
   return (
@@ -65,7 +70,7 @@ export default function IndividualsSection() {
           <motion.div variants={itemVariants} className="space-y-8 order-2 lg:order-1">
             {/* Lista de Proteções */}
             <ul className="space-y-4">
-              {protections.map(({ label, icon: Icon }, index) => (
+              {protections.map(({ label, icon: Icon }) => (
                 <motion.li 
                   key={label} 
                   className="flex items-center gap-4 p-4 rounded-2xl bg-white/50 hover:bg-white/80 transition-all duration-300 group cursor-pointer border border-transparent hover:border-[#676B49]/10"
@@ -88,7 +93,7 @@ export default function IndividualsSection() {
                 href="/services/individuals"
                 className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#676B49] to-[#676B49]/90 text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 border border-[#676B49]/40 group"
               >
-                Conhecer Todas as Opções
+                Conhecer Todas as Opções de Seguros
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
               </Link>
             </motion.div>
@@ -112,7 +117,7 @@ export default function IndividualsSection() {
                 </div>
                 <div>
                   <p className="font-semibold text-[#1D285E] text-sm">Tranquilidade Garantida</p>
-                  <p className="text-[#676B49] text-xs">Para você e sua família</p>
+                  <p className="text-[#676B49] text-xs">Seguros para você e sua família</p>
                 </div>
               </div>
             </div>

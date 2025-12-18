@@ -3,7 +3,18 @@
 import Link from "next/link"
 import Image from "next/image"
 import { motion, Variants } from "framer-motion"
-import { CheckCircle2, Building, ArrowRight } from "lucide-react"
+import { 
+  CheckCircle2, 
+  Building, 
+  ArrowRight,
+  UserCheck,
+  Users,
+  Plane,
+  Anchor,
+  Package,
+  Radio,
+  Shield
+} from "lucide-react"
 import SectionHeader from "@/components/section-header"
 
 const containerVariants: Variants = {
@@ -31,11 +42,13 @@ const itemVariants: Variants = {
 
 export default function BusinessSolutionsSection() {
   const solutions = [
-    "Responsabilidade Civil",
-    "Seguro de Bens",
-    "Proteção de Colaboradores",
-    "Seguro de Transporte",
-    "Proteção Profissional",
+    { label: "Seguro de Acidentes de Trabalho e Doenças Profissionais", icon: UserCheck },
+    { label: "Seguro de Acidentes Pessoais (Grupo)", icon: Users },
+    { label: "Seguro de Viagem (Grupo)", icon: Plane },
+    { label: "Seguro Marítimo / Embarcações", icon: Anchor },
+    { label: "Seguro de Mercadorias Transportadas", icon: Package },
+    { label: "Seguro de Drones", icon: Radio },
+    { label: "Seguro de Responsabilidade Civil", icon: Shield },
   ]
 
   return (
@@ -65,7 +78,7 @@ export default function BusinessSolutionsSection() {
             
             {/* Badge na Imagem */}
             <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-sm rounded-full px-4 py-3 shadow-lg">
-              <p className="text-sm font-semibold text-[#1D285E]">+500 Empresas</p>
+              <p className="text-sm font-semibold text-[#1D285E]">Empresas</p>
               <p className="text-xs text-[#676B49]">Protegidas</p>
             </div>
           </motion.div>
@@ -75,18 +88,18 @@ export default function BusinessSolutionsSection() {
 
             {/* Lista de Soluções */}
             <ul className="space-y-4">
-              {solutions.map((item) => (
+              {solutions.map(({ label, icon: Icon }) => (
                 <motion.li 
-                  key={item} 
+                  key={label} 
                   className="flex items-center gap-4 p-4 rounded-full bg-white/50 hover:bg-white/80 transition-all duration-300 group cursor-pointer border border-transparent hover:border-[#1D285E]/10"
                   whileHover={{ x: 8 }}
                 >
                   <div className="w-10 h-10 bg-[#1D285E] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <CheckCircle2 className="w-5 h-5 text-white" />
+                    <Icon className="w-5 h-5 text-white" />
                   </div>
 
                   <span className="text-lg font-medium text-[#1D285E] group-hover:text-[#676B49] transition-colors duration-300">
-                    {item}
+                    {label}
                   </span>
                 </motion.li>
               ))}
@@ -98,7 +111,7 @@ export default function BusinessSolutionsSection() {
                 href="/services/companies"
                 className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#1D285E] to-[#1D285E]/90 text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 border border-[#1D285E]/40 group"
               >
-                Explorar Soluções Empresariais
+                Explorar Todas as Soluções
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
               </Link>
             </motion.div>
@@ -108,4 +121,4 @@ export default function BusinessSolutionsSection() {
       </div>
     </section>
   )
-}
+} 

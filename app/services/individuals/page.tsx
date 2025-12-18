@@ -3,7 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { motion, Variants } from "framer-motion"
-import { CheckCircle2, Car, Heart, Plane, Home, Shield, Users, ArrowRight, Star } from "lucide-react"
+import { Car, Heart, Plane, Home, Shield, Users, Star } from "lucide-react"
 import SectionHeader from "@/components/section-header"
 
 const containerVariants: Variants = {
@@ -38,7 +38,7 @@ const textVariants: Variants = {
 export default function IndividualsPage() {
   return (
     <div className="w-full pt-16">
-      {/* Hero Section - SEM GRADIENTES */}
+      {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden bg-[#1D285E]">
         {/* Background Pattern */}
         <div className="absolute inset-0">
@@ -71,7 +71,7 @@ export default function IndividualsPage() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="inline-flex items-center gap-3 px-5 py-3 rounded-2xl bg-[#DDDED3]/10 backdrop-blur-md border border-[#DDDED3]/15 shadow-lg"
+              className="inline-flex items-center gap-3 px-5 py-3 rounded-full bg-[#DDDED3]/10 backdrop-blur-md border border-[#DDDED3]/15 shadow-lg"
             >
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-[#676B49] rounded-full animate-pulse" />
@@ -99,7 +99,7 @@ export default function IndividualsPage() {
               Seguros personalizados para cada etapa da sua vida e todas as suas necessidades
             </motion.p>
 
-            {/* CTA Button Único */}
+            {/* CTA Button */}
             <motion.div
               className="flex justify-center"
               initial={{ opacity: 0, y: 25 }}
@@ -117,7 +117,7 @@ export default function IndividualsPage() {
 
                   <span className="relative z-10 flex items-center gap-3 text-base text-white">
                     <Car className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
-                    Simular Agora
+                    Solicitar Cotação
                   </span>
                 </Link>
               </motion.div>
@@ -126,7 +126,7 @@ export default function IndividualsPage() {
         </div>
       </section>
 
-      {/* Tipos de Seguros */}
+      {/* Tipos de Seguros - ATUALIZADO */}
       <section className="py-20 md:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader 
@@ -135,7 +135,7 @@ export default function IndividualsPage() {
           />
 
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -144,87 +144,122 @@ export default function IndividualsPage() {
             {[
               {
                 icon: Car,
-                title: "Seguro de Automóvel",
-                description: "Proteção completa para o seu veículo e responsabilidade civil",
+                title: "Responsabilidade Civil (Automóvel)",
+                description: "Proteção contra danos a terceiros em acidentes com o seu veículo",
                 features: [
-                  "Responsabilidade civil",
-                  "Danos próprios",
-                  "Roubo e furto",
-                  "Assistência 24h",
-                  "Cobertura internacional",
-                ],
-              },
-              {
-                icon: Heart,
-                title: "Seguro de Saúde",
-                description: "Acesso a cuidados de saúde de qualidade quando mais precisa",
-                features: [
-                  "Consultas médicas",
-                  "Hospitalizações",
-                  "Cirurgias",
-                  "Tratamentos especializados",
-                  "Acesso a rede privada",
+                  "Danos corporais a terceiros",
+                  "Danos materiais a terceiros",
+                  "Assistência jurídica",
+                  "Cobertura nacional e internacional",
+                  "Limites de capital ajustáveis",
                 ],
               },
               {
                 icon: Shield,
-                title: "Seguro de Vida",
-                description: "Tranquilidade para si e proteção para a sua família",
+                title: "Contra Todos os Riscos (Automóvel)",
+                description: "Proteção abrangente para o seu veículo, incluindo danos próprios",
                 features: [
-                  "Proteção da família",
-                  "Rendimento de reforma",
-                  "Coberturas adicionais",
-                  "Flexibilidade contratual",
-                  "Cobertura de incapacidade",
+                  "Danos próprios por colisão",
+                  "Roubo e furto total/parcial",
+                  "Danos por fenómenos naturais",
+                  "Vidros e faróis",
+                  "Assistência 24h em viagem",
+                ],
+              },
+              {
+                icon: Heart,
+                title: "Saúde",
+                description: "Acesso a cuidados médicos de qualidade e tratamentos especializados",
+                features: [
+                  "Consultas médicas gerais e especializadas",
+                  "Hospitalizações e cirurgias",
+                  "Exames diagnósticos",
+                  "Medicamentos e tratamentos",
+                  "Acesso a rede privada de saúde",
                 ],
               },
               {
                 icon: Plane,
-                title: "Seguro de Viagem",
-                description: "Viaje com segurança e proteção em qualquer destino",
+                title: "Viagem",
+                description: "Segurança e assistência durante as suas viagens nacionais e internacionais",
                 features: [
-                  "Regressos de emergência",
-                  "Assistência médica",
-                  "Cancelamento de viagem",
-                  "Bagagem perdida",
-                  "Responsabilidade civil",
+                  "Assistência médica no estrangeiro",
+                  "Repatriamento sanitário",
+                  "Cancelamento ou interrupção de viagem",
+                  "Perda ou dano de bagagem",
+                  "Responsabilidade civil em viagem",
+                ],
+              },
+              {
+                icon: Home,
+                title: "Multirisco Habitação",
+                description: "Proteção completa para a sua casa e conteúdo contra diversos riscos",
+                features: [
+                  "Incêndio e explosão",
+                  "Roubo e furto",
+                  "Danos por água",
+                  "Responsabilidade civil familiar",
+                  "Quebra de vidros e eletrodomésticos",
+                ],
+              },
+              {
+                icon: Home,
+                title: "Multirisco Incêndio",
+                description: "Proteção específica contra incêndio e riscos associados",
+                features: [
+                  "Incêndio e explosão",
+                  "Raio e tempestade",
+                  "Danos por fumo",
+                  "Despesas de salvamento",
+                  "Alojamento alternativo",
+                ],
+              },
+              {
+                icon: Users,
+                title: "Acidente de Trabalho e Doenças Profissionais (Individual)",
+                description: "Proteção para acidentes ocorridos no exercício da atividade profissional",
+                features: [
+                  "Invalidez permanente ou temporária",
+                  "Morte por acidente de trabalho",
+                  "Despesas de tratamento médico",
+                  "Indemnizações diárias",
+                  "Reabilitação profissional",
                 ],
               },
             ].map((insurance, index) => (
               <motion.div
                 key={index}
                 variants={itemVariants}
-                whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                whileHover={{ y: -6, transition: { duration: 0.3 } }}
                 className="group"
               >
-                <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-[#1D285E]/5 hover:border-[#676B49]/20 h-full">
-                  <div className="w-16 h-16 bg-[#1D285E] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                    <insurance.icon className="w-8 h-8 text-white" />
+                <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-500 border border-[#1D285E]/5 hover:border-[#676B49]/20 h-full flex flex-col">
+                  <div className="w-12 h-12 bg-[#1D285E] rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-md">
+                    <insurance.icon className="w-6 h-6 text-white" />
                   </div>
 
-                  <h3 className="text-xl font-bold text-[#1D285E] mb-4 group-hover:text-[#676B49] transition-colors duration-300">
+                  <h3 className="text-lg font-bold text-[#1D285E] mb-3 group-hover:text-[#676B49] transition-colors duration-300 line-clamp-2">
                     {insurance.title}
                   </h3>
                   
-                  <p className="text-[#1D285E]/70 leading-relaxed mb-6">
+                  <p className="text-[#1D285E]/70 text-sm leading-relaxed mb-4 flex-grow">
                     {insurance.description}
                   </p>
 
                   {/* Features */}
-                  <ul className="space-y-2 mb-6">
-                    {insurance.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center gap-2 text-sm text-[#1D285E]/60">
-                        <div className="w-1.5 h-1.5 bg-[#676B49] rounded-full" />
-                        {feature}
+                  <ul className="space-y-1.5">
+                    {insurance.features.slice(0, 3).map((feature, idx) => (
+                      <li key={idx} className="flex items-center gap-2 text-xs text-[#1D285E]/60">
+                        <div className="w-1.5 h-1.5 bg-[#676B49] rounded-full flex-shrink-0" />
+                        <span className="line-clamp-1">{feature}</span>
                       </li>
                     ))}
+                    {insurance.features.length > 3 && (
+                      <li className="text-xs text-[#676B49] font-medium">
+                        + {insurance.features.length - 3} outras coberturas
+                      </li>
+                    )}
                   </ul>
-
-                  {/* CTA Sutil */}
-                  <div className="flex items-center gap-2 text-[#676B49] font-semibold text-sm group-hover:gap-3 transition-all duration-300 cursor-pointer">
-                    Saber mais
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                  </div>
                 </div>
               </motion.div>
             ))}
@@ -250,7 +285,7 @@ export default function IndividualsPage() {
             {/* Imagem */}
             <motion.div variants={itemVariants} className="relative h-96 lg:h-[500px] rounded-3xl overflow-hidden shadow-2xl">
               <Image
-                src="/placeholder.svg?key=life-stages"
+                src="/28.jpg"
                 alt="Fases da vida"
                 fill
                 className="object-cover"
@@ -258,7 +293,7 @@ export default function IndividualsPage() {
               <div className="absolute inset-0 bg-[#1D285E]/20" />
               
               {/* Badge na Imagem */}
-              <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-sm rounded-2xl px-4 py-3 shadow-lg">
+              <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-sm rounded-full px-4 py-3 shadow-lg">
                 <p className="text-sm font-semibold text-[#1D285E]">Para Todas as Idades</p>
                 <p className="text-xs text-[#676B49]">Proteção Adaptada</p>
               </div>
@@ -287,10 +322,10 @@ export default function IndividualsPage() {
                 ].map((stage, index) => (
                   <motion.div 
                     key={index}
-                    className="flex items-center gap-4 p-4 rounded-2xl bg-white/50 hover:bg-white/80 transition-all duration-300 group cursor-pointer border border-transparent hover:border-[#676B49]/10"
+                    className="flex items-center gap-4 p-4 rounded-full bg-white/50 hover:bg-white/80 transition-all duration-300 group cursor-pointer border border-transparent hover:border-[#676B49]/10"
                     whileHover={{ x: 8 }}
                   >
-                    <div className="w-10 h-10 bg-[#676B49] rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-10 h-10 bg-[#676B49] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                       <Heart className="w-5 h-5 text-white" />
                     </div>
                     <div className="flex-1">
@@ -353,7 +388,7 @@ export default function IndividualsPage() {
                 className="group"
               >
                 <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-[#1D285E]/5 hover:border-[#676B49]/20 h-full">
-                  <div className="w-16 h-16 bg-[#1D285E] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                  <div className="w-16 h-16 bg-[#1D285E] rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                     <benefit.icon className="w-8 h-8 text-white" />
                   </div>
 
@@ -374,7 +409,7 @@ export default function IndividualsPage() {
         </div>
       </section>
 
-      {/* CTA Final - SEM GRADIENTES */}
+      {/* CTA Final */}
       <section className="py-20 md:py-28 bg-[#1D285E] relative overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0">
@@ -398,28 +433,28 @@ export default function IndividualsPage() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20"
             >
-              <Star className="w-4 h-4 text-white" />
+              <Shield className="w-4 h-4 text-white" />
               <span className="text-white text-sm font-medium tracking-wide">
-                Simulação Gratuita
+                Proteção Personalizada
               </span>
             </motion.div>
 
             {/* Heading */}
             <div className="space-y-6">
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-                Comece sua{" "}
+                Pronto para{" "}
                 <span className="text-white">
-                  proteção
+                  proteger
                 </span>{" "}
-                hoje?
+                o que é importante?
               </h2>
               
               <p className="text-xl md:text-2xl text-white/80 leading-relaxed max-w-2xl mx-auto">
-                Simulação rápida e sem compromisso em minutos
+                Receba uma cotação personalizada dos nossos especialistas
               </p>
             </div>
 
-            {/* CTA Button Único */}
+            {/* CTA Button */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -433,8 +468,8 @@ export default function IndividualsPage() {
                 className="group relative inline-flex items-center gap-3 px-8 py-4 bg-white text-[#1D285E] rounded-full font-semibold shadow-2xl hover:shadow-3xl transition-all duration-300 border border-white/20 overflow-hidden"
               >
                 <div className="absolute inset-0 bg-[#1D285E]/5 -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-                <Car className="w-5 h-5 relative" />
-                <span className="relative">Fazer Simulação Gratuita</span>
+                <Shield className="w-5 h-5 relative" />
+                <span className="relative">Solicitar Cotação</span>
               </motion.a>
             </motion.div>
 
@@ -445,7 +480,7 @@ export default function IndividualsPage() {
               transition={{ duration: 0.6, delay: 0.8 }}
               className="text-white/50 text-sm"
             >
-              Sem compromisso e resposta em 24 horas
+              Resposta em 24 horas • Análise personalizada • Sem compromisso inicial
             </motion.p>
           </motion.div>
         </div>

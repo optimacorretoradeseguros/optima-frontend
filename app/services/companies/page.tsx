@@ -3,7 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { motion, Variants } from "framer-motion"
-import { CheckCircle2, Shield, Zap, TrendingUp, Building, Target, Users, ArrowRight, Star } from "lucide-react"
+import { CheckCircle2, Shield, Zap, TrendingUp, Building, Target, Users, ArrowRight, Star, UserCheck, Plane, Anchor, Package, Radio, Home, Factory, Cpu, Heart, Stethoscope } from "lucide-react"
 import SectionHeader from "@/components/section-header"
 
 const containerVariants: Variants = {
@@ -36,9 +36,54 @@ const textVariants: Variants = {
 }
 
 export default function CompaniesPage() {
+  const allSolutions = [
+    { label: "Seguro de Acidentes de Trabalho", icon: UserCheck },
+    { label: "Seguro de Acidentes Pessoais (Grupo)", icon: Users },
+    { label: "Seguro de Viagem (Grupo)", icon: Plane },
+    { label: "Seguro Marítimo / Embarcações", icon: Anchor },
+    { label: "Seguro de Mercadorias Transportadas", icon: Package },
+    { label: "Seguro de Drones", icon: Radio },
+    { label: "Seguro de Responsabilidade Civil", icon: Shield },
+    { label: "Seguro Multirisco Empresa", icon: Factory },
+    { label: "Seguro Multirisco Habitação", icon: Home },
+    { label: "Seguro de Casco / Maquinaria / Equipamentos", icon: Cpu },
+    { label: "Seguro de Vida Grupo", icon: Heart },
+    { label: "Seguro de Saúde Grupo", icon: Stethoscope },
+  ]
+
+  const industries = [
+    { name: "Comércio", count: "+ empresas" },
+    { name: "Indústria", count: "+ empresas" },
+    { name: "Serviços", count: "+ empresas" },
+    { name: "Tecnologia", count: "+ empresas" },
+    { name: "Construção", count: "+ empresas" },
+    { name: "Logística", count: "+ empresas" },
+  ]
+
+  const benefits = [
+    {
+      icon: Shield,
+      title: "Proteção Completa",
+      description: "Coberturas abrangentes para patrimônio, responsabilidade e pessoal.",
+      features: ["Patrimônio", "Responsabilidade", "Equipa"]
+    },
+    {
+      icon: Zap,
+      title: "Contratos Flexíveis", 
+      description: "Adaptados ao seu negócio com opções de personalização.",
+      features: ["Personalização", "Flexibilidade", "Adaptabilidade"]
+    },
+    {
+      icon: TrendingUp,
+      title: "Consultoria Estratégica",
+      description: "Análise de riscos e recomendações alinhadas com objetivos.",
+      features: ["Análise de Riscos", "Estratégia", "Otimização"]
+    }
+  ]
+
   return (
     <div className="w-full pt-16">
-      {/* Hero Section - removidos gradientes */}
+      {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden bg-[#1D285E]">
         <div className="absolute inset-0">
           <Image
@@ -101,7 +146,7 @@ export default function CompaniesPage() {
                 >
                   <span className="flex items-center gap-3 text-base">
                     <Target className="w-5 h-5" />
-                    Solicitar Análise
+                    Solicitar Cotação
                   </span>
                 </Link>
               </motion.div>
@@ -110,7 +155,7 @@ export default function CompaniesPage() {
         </div>
       </section>
 
-      {/* Benefícios - IDÊNTICOS */}
+      {/* Benefícios */}
       <section className="py-20 md:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader 
@@ -125,26 +170,7 @@ export default function CompaniesPage() {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
           >
-            {[ 
-              {
-                icon: Shield,
-                title: "Proteção Completa",
-                description: "Coberturas abrangentes para patrimônio, responsabilidade e pessoal.",
-                features: ["Patrimônio", "Responsabilidade", "Equipa"]
-              },
-              {
-                icon: Zap,
-                title: "Contratos Flexíveis", 
-                description: "Adaptados ao seu negócio com opções de personalização.",
-                features: ["Personalização", "Flexibilidade", "Adaptabilidade"]
-              },
-              {
-                icon: TrendingUp,
-                title: "Consultoria Estratégica",
-                description: "Análise de riscos e recomendações alinhadas com objetivos.",
-                features: ["Análise de Riscos", "Estratégia", "Otimização"]
-              }
-            ].map((benefit, index) => (
+            {benefits.map((benefit, index) => (
               <motion.div
                 key={index}
                 variants={itemVariants}
@@ -164,7 +190,7 @@ export default function CompaniesPage() {
                     {benefit.description}
                   </p>
 
-                  <ul className="space-y-2 mb-6">
+                  <ul className="space-y-2">
                     {benefit.features.map((feature, idx) => (
                       <li key={idx} className="flex items-center gap-2 text-sm text-[#1D285E]/60">
                         <div className="w-1.5 h-1.5 bg-[#676B49] rounded-full" />
@@ -172,10 +198,48 @@ export default function CompaniesPage() {
                       </li>
                     ))}
                   </ul>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
 
-                  <div className="flex items-center gap-2 text-[#676B49] font-semibold text-sm group-hover:gap-3 transition-all duration-300 cursor-pointer">
-                    Saber mais
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+      {/* Lista Completa de Seguros */}
+      <section className="py-20 md:py-28 bg-gradient-to-b from-white to-[#F8F9FA]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeader 
+            title="Soluções de Seguro Empresarial" 
+            subtitle="Coberturas abrangentes para todos os tipos de negócio"
+          />
+
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            {allSolutions.map(({ label, icon: Icon }, index) => (
+              <motion.div
+                key={label}
+                variants={itemVariants}
+                whileHover={{ y: -5, transition: { duration: 0.3 } }}
+                className="group"
+              >
+                <div className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-[#1D285E]/10 hover:border-[#676B49]/30 h-full">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-[#1D285E] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                      <Icon className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-[#1D285E] group-hover:text-[#676B49] transition-colors duration-300">
+                        {label}
+                      </h3>
+                      <p className="text-sm text-[#1D285E]/60 mt-2">
+                        Cobertura adaptada às necessidades específicas do seu negócio
+                      </p>
+                    </div>
                   </div>
                 </div>
               </motion.div>
@@ -184,9 +248,72 @@ export default function CompaniesPage() {
         </div>
       </section>
 
-      {/* Tipos de Seguros, Processo, Estatísticas - sem alterações */}
+      {/* Setores que Atendemos */}
+      <section className="py-20 md:py-28 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeader 
+            title="Experiência em Diferentes Setores" 
+            subtitle="Mais de 500 empresas já confiaram nas nossas soluções"
+          />
 
-      {/* CTA Final - removidos gradientes */}
+          <motion.div
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            {industries.map(({ name, count }, index) => (
+              <motion.div
+                key={name}
+                variants={itemVariants}
+                whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
+                className="group"
+              >
+                <div className="bg-white rounded-xl p-6 text-center shadow-lg hover:shadow-2xl transition-all duration-300 border border-[#1D285E]/10 hover:border-[#676B49]/30">
+                  <div className="w-12 h-12 bg-[#1D285E] rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <Building className="w-6 h-6 text-white" />
+                  </div>
+                  <h4 className="font-semibold text-[#1D285E] mb-1">{name}</h4>
+                  <p className="text-sm text-[#676B49] font-medium">{count}</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="mt-16 text-center"
+          >
+            <div className="bg-gradient-to-r from-[#1D285E]/5 to-[#676B49]/5 rounded-2xl p-8 border border-[#1D285E]/10">
+              <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div className="text-left">
+                  <h3 className="text-2xl font-bold text-[#1D285E] mb-2">
+                    Empresa não está na lista?
+                  </h3>
+                  <p className="text-[#1D285E]/70">
+                    Temos soluções para todos os setores. Entre em contacto para uma análise personalizada.
+                  </p>
+                </div>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center gap-3 px-6 py-3 bg-[#1D285E] text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                  >
+                    <Users className="w-5 h-5" />
+                    Falar com Especialista
+                  </Link>
+                </motion.div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* CTA Final */}
       <section className="py-20 md:py-28 bg-[#1D285E] relative overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <motion.div

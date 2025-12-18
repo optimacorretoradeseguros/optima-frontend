@@ -17,11 +17,11 @@ export default function Navbar() {
   }, [pathname])
 
   const navItems = [
-    { label: "Início", href: "/", icon: Home },
-    { label: "Sobre", href: "/about", icon: Users },
+    { label: "Início", href: "/", icon: Home }, 
     { label: "Empresas", href: "/services/companies", icon: Building2 },
     { label: "Particulares", href: "/services/individuals", icon: User },
     { label: "Blog", href: "/blog", icon: FileText },
+    { label: "Sobre", href: "/about", icon: Users },
   ]
 
   const containerVariants: Variants = {
@@ -63,11 +63,11 @@ export default function Navbar() {
           >
             <Link href="/" className="hover:opacity-80 transition-opacity duration-300">
               <Image
-                src="/logo-optima3.jpeg"
+                src="/optima.png"
                 alt="Óptima Corretora de Seguros"
                 width={160}
                 height={80}
-                className="h-19 w-auto object-contain"
+                className="h-13 w-auto object-contain"
               />
             </Link>
           </motion.div>
@@ -119,7 +119,7 @@ export default function Navbar() {
                 href="/simulation"
                 className="px-6 py-3 rounded-full text-sm font-semibold text-[#DDDED3] bg-[#676B49] hover:bg-[#676B49]/90 transition-all duration-300 shadow-md hover:shadow-lg border border-[#676B49]/20 hover:border-[#676B49]/30"
               >
-                Simulação
+                Solicitar Cotação
               </Link>
             </motion.div>
             <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
@@ -183,7 +183,7 @@ export default function Navbar() {
                       className="block w-full px-4 py-4 rounded-full text-center text-sm font-semibold text-[#DDDED3] bg-[#676B49] hover:bg-[#676B49]/90 transition-all duration-300 shadow-md hover:shadow-lg border border-[#676B49]/20"
                       onClick={() => setIsOpen(false)}
                     >
-                      Simulação
+                      Solicitar Sua Cotação
                     </Link>
                   </motion.div>
                   <motion.div variants={mobileItemVariants} initial="closed" animate="open" exit="closed" transition={{ delay: (navItems.length + 1) * 0.05 }}>

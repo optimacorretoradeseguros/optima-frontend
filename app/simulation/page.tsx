@@ -33,13 +33,40 @@ export default function SimulationPage() {
     email: "",
     phone: "",
     type: "individual",
-    insuranceType: "auto",
+    insuranceType: "auto-liability",
     message: "",
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSending, setIsSending] = useState(false);
+
+  // Opções de seguro para Particulares
+  const individualOptions = [
+    { value: "auto-liability", label: "Responsabilidade Civil (Automóvel)" },
+    { value: "auto-comprehensive", label: "Contra Todos os Riscos (Automóvel)" },
+    { value: "health", label: "Saúde" },
+    { value: "travel", label: "Viagem" },
+    { value: "home-multi", label: "Multirisco Habitação" },
+    { value: "fire-multi", label: "Multirisco Incêndio" },
+    { value: "work-accident", label: "Acidente de Trabalho e Doenças Profissionais (Individual)" }
+  ];
+
+  // Opções de seguro para Empresas
+  const companyOptions = [
+    { value: "work-accident-group", label: "Acidentes de Trabalho e Doenças Profissionais" },
+    { value: "personal-accident-group", label: "Acidentes Pessoais (Grupo)" },
+    { value: "travel-group", label: "Viagem (Grupo)" },
+    { value: "marine", label: "Marítimo / Embarcações" },
+    { value: "cargo", label: "Mercadorias Transportadas" },
+    { value: "drones", label: "Drones" },
+    { value: "liability", label: "Responsabilidade Civil" },
+    { value: "business-multi", label: "Multirisco Empresa" },
+    { value: "home-multi-business", label: "Multirisco Habitação" },
+    { value: "machinery", label: "Casco / Maquinaria / Equipamentos" },
+    { value: "life-group", label: "Vida Grupo" },
+    { value: "health-group", label: "Saúde Grupo" }
+  ];
 
   // Função para tratar as mudanças nos inputs do formulário
   const handleChange = (
@@ -100,12 +127,12 @@ export default function SimulationPage() {
           email: "",
           phone: "",
           type: "individual",
-          insuranceType: "auto",
+          insuranceType: "auto-liability",
           message: "",
         });
       }, 5000);
     } catch (error) {
-      alert("Erro ao enviar a simulação. Tente novamente.");
+      alert("Erro ao enviar a cotação. Tente novamente.");
     } finally {
       setIsSending(false);
     }
@@ -114,16 +141,16 @@ export default function SimulationPage() {
   return (
     <div className="w-full pt-16">
       {/* Hero */}
-      <section className="py-12 md:py-20 bg-gradient-to-br from-[#1D285E]/5 to-[#676B49]/5">
+      <section className="py-12 md:py-20 bg-[rgb(230,235,221)]">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div 
             initial={{ opacity: 0, y: 20 }} 
             animate={{ opacity: 1, y: 0 }} 
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl md:text-5xl font-bold text-[#1D285E] mb-6">Simulação Gratuita</h1>
+            <h1 className="text-4xl md:text-5xl font-bold text-[#1D285E] mb-6">Solicite a Sua Cotação!</h1>
             <p className="text-xl text-[#1D285E]/70">
-              Receba uma proposta personalizada em minutos, sem qualquer compromisso
+              Receba uma cotação personalizada dos nossos especialistas em seguros
             </p>
           </motion.div>
         </div>
@@ -200,8 +227,7 @@ export default function SimulationPage() {
                 <div className="grid grid-cols-2 gap-4">
                   <button
                     type="button"
-                    onClick={() => setFormData((prev) => ({ ...prev, type: "individual" }))}
-
+                    onClick={() => setFormData((prev) => ({ ...prev, type: "individual", insuranceType: "auto-liability" }))}
                     className={`px-4 py-3 rounded-full border-2 font-medium ${formData.type === "individual" ? "border-[#676B49] bg-[#676B49]/10 text-[#676B49]" : "border-gray-300 text-[#1D285E]"}`}
                   >
                     Particular
@@ -209,8 +235,7 @@ export default function SimulationPage() {
 
                   <button
                     type="button"
-                    onClick={() => setFormData((prev) => ({ ...prev, type: "company" }))}
-
+                    onClick={() => setFormData((prev) => ({ ...prev, type: "company", insuranceType: "work-accident-group" }))}
                     className={`px-4 py-3 rounded-full border-2 font-medium ${formData.type === "company" ? "border-[#676B49] bg-[#676B49]/10 text-[#676B49]" : "border-gray-300 text-[#1D285E]"}`}
                   >
                     Empresa
@@ -221,7 +246,6 @@ export default function SimulationPage() {
               {/* Tipo de seguro */}
               <motion.div variants={itemVariants} className="mb-6">
                 <label className="block text-sm font-semibold text-[#1D285E] mb-2">Tipo de Seguro</label>
-
                 <select
                   name="insuranceType"
                   value={formData.insuranceType}
@@ -230,19 +254,19 @@ export default function SimulationPage() {
                 >
                   {formData.type === "individual" ? (
                     <>
-                      <option value="auto">Seguro de Automóvel</option>
-                      <option value="health">Seguro de Saúde</option>
-                      <option value="life">Seguro de Vida</option>
-                      <option value="travel">Seguro de Viagem</option>
-                      <option value="home">Seguro de Habitação</option>
+                      {individualOptions.map((option) => (
+                        <option key={option.value} value={option.value}>
+                          {option.label}
+                        </option>
+                      ))}
                     </>
                   ) : (
                     <>
-                      <option value="liability">Responsabilidade Civil</option>
-                      <option value="property">Seguro de Bens</option>
-                      <option value="employees">Proteção de Colaboradores</option>
-                      <option value="transport">Seguro de Transporte</option>
-                      <option value="other">Outro</option>
+                      {companyOptions.map((option) => (
+                        <option key={option.value} value={option.value}>
+                          {option.label}
+                        </option>
+                      ))}
                     </>
                   )}
                 </select>
@@ -251,7 +275,6 @@ export default function SimulationPage() {
               {/* Mensagem */}
               <motion.div variants={itemVariants} className="mb-8">
                 <label className="block text-sm font-semibold text-[#1D285E] mb-2">Detalhes Adicionais</label>
-
                 <textarea
                   name="message"
                   value={formData.message}
@@ -269,7 +292,7 @@ export default function SimulationPage() {
                 disabled={isSending}
                 className="w-full px-8 py-4 bg-[#676B49] text-white rounded-full font-semibold hover:bg-[#5a5d3d] transition-colors disabled:opacity-50"
               >
-                {isSending ? "A enviar..." : "Receber Simulação Gratuita"}
+                {isSending ? "A enviar..." : "Solicitar Cotação"}
               </motion.button>
             </motion.form>
           ) : (
@@ -285,11 +308,11 @@ export default function SimulationPage() {
               </div>
 
               <h2 className="text-2xl font-bold text-green-900 mb-4">
-                Simulação enviada com sucesso!
+                Cotação solicitada com sucesso!
               </h2>
 
               <p className="text-green-800 mb-6">
-                Em breve um consultor entrará em contacto consigo.
+                Em breve um consultor entrará em contacto consigo com a sua cotação personalizada.
               </p>
             </motion.div>
           )}
@@ -297,4 +320,4 @@ export default function SimulationPage() {
       </section>
     </div>
   );
-}
+} 

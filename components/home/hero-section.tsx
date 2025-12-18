@@ -120,7 +120,7 @@ export default function HeroSection() {
                 >
                   <span className="relative z-10 flex items-center gap-3 text-base text-white">
                     <Shield className="w-5 h-5 text-white" />
-                    Simulação Online
+                    Solicitar Sua Cotação
                   </span>
                 </Link>
               </motion.div>
