@@ -118,18 +118,18 @@ export default function AboutPage() {
 
             <motion.div variants={itemVariants} className="space-y-6">
               <h2 className="text-3xl md:text-4xl font-bold text-[#1D285E] mb-6">
-                Nossa <span className="text-[#676B49]">História</span>
+                Quem <span className="text-[#676B49]">Somos</span>
               </h2>
               
               <div className="space-y-4 text-[#1D285E]/70 text-lg leading-relaxed">
                 <p>
-                  A Óptima Corretora de Seguros é resultado de anos de experiência no mercado português de mediação seguros.
+                  A ÓPTIMA – Corretora de Seguros apresenta os seus cumprimentos e disponibilidade para ser sua parceira em soluções de seguros pessoais e empresariais.
                 </p>
                 <p>
-                  Não nos satisfazemos em oferecer produtos genéricos. Cada cliente é único, e por isso, cada solução é personalizada e pensada ao detalhe.
+                  Somos uma corretora focada em excelência de atendimento, personalização de soluções e gestão proactiva de riscos, garantindo tranquilidade para que os clientes se concentrem no crescimento dos seus negócios e bem-estar familiar.
                 </p>
                 <p>
-                  Somos parceiros de confiança de empresas e particulares que sabem o valor de uma proteção bem feita.
+                  Contamos com uma equipa experiente e certificada, apta a identificar as melhores oportunidades do mercado segurador, garantindo coberturas adequadas, prémios competitivos e suporte integral.
                 </p>
               </div>
 
@@ -176,15 +176,15 @@ export default function AboutPage() {
             {[{
               icon: Target,
               title: "Missão",
-              description: "Ser o intermediário de confiança que simplifica o processo de contratação de seguros."
+              description: "Ser a corretora de seguros líder e de confiança em Angola, oferecendo soluções inovadoras que protejam vida, património e interesses. Compromisso com atendimento de excelência, consultoria especializada e transparência."
             }, {
               icon: Eye,
               title: "Visão",
-              description: "Ser a corretora mais recomendada de Portugal."
+              description: "Ser referência nacional e internacional em corretagem de seguros, destacando-nos pela qualidade do atendimento e inovação tecnológica. Em 10 anos, almejamos liderar o mercado angolano e expandir para a África Austral."
             }, {
               icon: Heart,
               title: "Valores",
-              description: "Integridade, comprometimento, excelência e inovação contínua."
+              description: "Confiança e Integridade | Inovação | Compromisso com o Cliente | Responsabilidade Social | Excelência | Transparência | Cultura Organizacional"
             }].map((item, index) => (
               <motion.div key={index} variants={itemVariants} whileHover={{ y: -8 }} className="group">
                 <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-[#1D285E]/5 hover:border-[#676B49]/20 h-full">
@@ -228,7 +228,7 @@ export default function AboutPage() {
               description: "Recomendações baseadas em necessidades reais."
             },{
               icon: Shield,
-              title: "Parceiros Premium", 
+              title: "Parceiros Estratégicos", 
               description: "Relacionamento exclusivo com seguradoras líderes."
             },{
               icon: Star,
@@ -258,4 +258,4 @@ export default function AboutPage() {
 
     </div>
   )
-} 
+}

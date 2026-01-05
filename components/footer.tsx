@@ -58,19 +58,16 @@ export default function Footer() {
       <div className="absolute inset-0 bg-[#1D285E]/80" />
 
       {/* Conteúdo */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-4 gap-8"
+          className="grid grid-cols-1 md:grid-cols-4 gap-y-6 md:gap-x-12"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
         >
           {/* Brand */}
-          <motion.div variants={itemVariants}>
-            <p className="text-sm text-white/90 leading-relaxed mb-4">
-              A melhor proteção começa com a escolha certa — e com o parceiro certo.
-            </p>
+          <motion.div variants={itemVariants} className="flex flex-col items-start pr-4 md:pr-8">
             <motion.div 
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -79,18 +76,21 @@ export default function Footer() {
                 <Image
                   src="/optima2.png"
                   alt="Óptima Corretora de Seguros"
-                  width={180}
-                  height={80}
-                  className="h-60 w-auto object-contain"
+                  width={140}
+                  height={56}
+                  className="w-auto h-auto object-contain"
                 />
               </Link>
             </motion.div>
+            <p className="text-sm text-white/90 leading-snug mt-3">
+              A melhor proteção começa com a escolha certa — e com o parceiro certo.
+            </p>
           </motion.div>
 
           {/* Navigation Links */}
           <motion.div variants={itemVariants}>
             <h4 className="font-semibold text-white mb-4 text-lg">Navegação</h4>
-            <ul className="space-y-3">
+            <ul className="space-y-2">
               {[{ label: "Início", href: "/" },
                 { label: "Sobre", href: "/about" },
                 { label: "Blog", href: "/blog" },
@@ -114,7 +114,7 @@ export default function Footer() {
           {/* Services */}
           <motion.div variants={itemVariants}>
             <h4 className="font-semibold text-white mb-4 text-lg">Serviços</h4>
-            <ul className="space-y-3">
+            <ul className="space-y-2">
               {[{ label: "Mediação", href: "/services/mediation" },
                 { label: "Empresas", href: "/services/companies" },
                 { label: "Particulares", href: "/services/individuals" },
@@ -137,7 +137,7 @@ export default function Footer() {
           {/* Contact Info */}
           <motion.div variants={itemVariants}>
             <h4 className="font-semibold text-white mb-4 text-lg">Contacto</h4>
-            <ul className="space-y-4 text-sm">
+            <ul className="space-y-3 text-sm">
               <motion.li className="flex items-center gap-3 text-white/70 hover:text-white transition-colors duration-300" whileHover={{ x: 4 }}>
                 <div className="p-2 bg-[#283373] rounded-lg">
                   <Mail size={16} className="text-white" />
@@ -169,8 +169,8 @@ export default function Footer() {
         </motion.div>
 
         {/* Bottom Bar */}
-        <motion.div className="border-t border-[#283373] mt-12 pt-8" variants={bottomBarVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-          <p className="text-center text-sm text-white/70">
+        <motion.div className="border-t border-[#283373] mt-8 pt-6" variants={bottomBarVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+          <p className="text-center text-xs text-white/70">
             © {currentYear} Óptima Corretora de Seguros. Todos os direitos reservados.
             <br />
             Website for RC Media
