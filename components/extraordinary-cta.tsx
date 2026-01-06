@@ -9,7 +9,7 @@ export default function ExtraordinaryCTA() {
         <section className="relative py-24 lg:py-32 overflow-hidden">
             {/* Background Elements */}
             <div className="absolute inset-0 bg-[#1D285E]">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#1D285E] via-[#151b3d] to-[#0f1225]" />
+                <div className="absolute inset-0 bg-linear-to-br from-[#1D285E] via-[#151b3d] to-[#0f1225]" />
 
                 {/* Animated Orbs */}
                 <motion.div
@@ -34,7 +34,7 @@ export default function ExtraordinaryCTA() {
                 <div className="bg-white/5 backdrop-blur-2xl border border-white/10 rounded-[3rem] p-8 md:p-16 lg:p-20 relative overflow-hidden group">
 
                     {/* Shine Effect */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-[2s] ease-in-out" />
+                    <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-[2s] ease-in-out" />
 
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
@@ -53,7 +53,7 @@ export default function ExtraordinaryCTA() {
 
                                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-[1.1] mb-6 tracking-tight">
                                     Pronto para elevar <br />
-                                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#bbc096] to-white">
+                                    <span className="text-transparent bg-clip-text bg-linear-to-r from-[#bbc096] to-white">
                                         a sua segurança?
                                     </span>
                                 </h2>
@@ -100,8 +100,8 @@ export default function ExtraordinaryCTA() {
                             transition={{ duration: 0.8, delay: 0.3 }}
                             className="relative hidden lg:block"
                         >
-                            <div className="relative z-10 bg-gradient-to-tr from-[#1D285E] to-[#2a3875] p-2 rounded-[2.5rem] shadow-2xl rotate-3 border border-white/10">
-                                <div className="bg-[#0f1535] rounded-[2rem] p-8 h-[400px] flex flex-col justify-center items-center text-center space-y-6 relative overflow-hidden">
+                            <div className="relative z-10 bg-linear-to-tr from-[#1D285E] to-[#2a3875] p-2 rounded-[2.5rem] shadow-2xl rotate-3 border border-white/10">
+                                <div className="bg-[#0f1535] rounded-4xl p-8 h-[400px] flex flex-col justify-center items-center text-center space-y-6 relative overflow-hidden">
                                     {/* Abstract UI Elements */}
                                     <div className="w-24 h-24 bg-[#676B49] rounded-2xl rotate-12 flex items-center justify-center shadow-lg shadow-[#676B49]/20 mb-4 z-10">
                                         <Shield className="w-12 h-12 text-white" />

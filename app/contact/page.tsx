@@ -348,7 +348,7 @@ export default function ContactPage() {
                 className="bg-white border border-gray-200 rounded-lg p-8 mb-12 hover:shadow-md transition-shadow"
               >
                 <div className="flex items-start gap-4 mb-6">
-                  <div className="w-12 h-12 bg-[#676B49] rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-[#676B49] rounded-full flex items-center justify-center shrink-0">
                     <MapPin size={24} className="text-white" />
                   </div>
                   <div>
@@ -370,7 +370,7 @@ export default function ContactPage() {
                 className="bg-[#1D285E]/5 border border-[#1D285E]/10 rounded-lg p-8"
               >
                 <div className="flex items-start gap-4 mb-6">
-                  <div className="w-12 h-12 bg-[#676B49] rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-[#676B49] rounded-full flex items-center justify-center shrink-0">
                     <Clock size={24} className="text-white" />
                   </div>
                   <div>
@@ -408,7 +408,7 @@ export default function ContactPage() {
           <div className="flex flex-col md:flex-row gap-6 justify-between items-start md:items-center mb-8">
             {/* Search / Trace Route */}
             <div className="w-full max-w-md bg-white p-2 rounded-xl shadow-sm border border-gray-200 flex gap-2">
-              <div className="relative flex-grow">
+              <div className="relative grow">
                 <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
                 <input
                   type="text"
@@ -436,21 +436,21 @@ export default function ContactPage() {
             <div className="flex bg-white p-1.5 rounded-xl shadow-sm border border-gray-200 gap-1 overflow-x-auto max-w-full">
               <button
                 onClick={() => setMapType("m")}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-2 flex-shrink-0 ${mapType === 'm' ? 'bg-[#1D285E] text-white shadow-sm' : 'hover:bg-gray-50 text-[#1D285E]/70'}`}
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-2 shrink-0 ${mapType === 'm' ? 'bg-[#1D285E] text-white shadow-sm' : 'hover:bg-gray-50 text-[#1D285E]/70'}`}
               >
                 <Map size={16} />
                 <span className="hidden sm:inline">Mapa</span>
               </button>
               <button
                 onClick={() => setMapType("k")}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-2 flex-shrink-0 ${mapType === 'k' ? 'bg-[#1D285E] text-white shadow-sm' : 'hover:bg-gray-50 text-[#1D285E]/70'}`}
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-2 shrink-0 ${mapType === 'k' ? 'bg-[#1D285E] text-white shadow-sm' : 'hover:bg-gray-50 text-[#1D285E]/70'}`}
               >
                 <Globe size={16} />
                 <span className="hidden sm:inline">Satélite</span>
               </button>
               <button
                 onClick={() => setMapType("p")}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-2 flex-shrink-0 ${mapType === 'p' ? 'bg-[#1D285E] text-white shadow-sm' : 'hover:bg-gray-50 text-[#1D285E]/70'}`}
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-2 shrink-0 ${mapType === 'p' ? 'bg-[#1D285E] text-white shadow-sm' : 'hover:bg-gray-50 text-[#1D285E]/70'}`}
               >
                 <Mountain size={16} />
                 <span className="hidden sm:inline">Terreno</span>

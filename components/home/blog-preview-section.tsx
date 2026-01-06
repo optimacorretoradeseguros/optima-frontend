@@ -60,7 +60,7 @@ export default function BlogPreviewSection({ posts }: BlogPreviewSectionProps) {
   }
 
   return (
-    <section className="py-20 md:py-28 bg-gradient-to-br from-white via-[#F8F9FA] to-[#DDDED3]/30">
+    <section className="py-20 md:py-28 bg-linear-to-br from-white via-[#F8F9FA] to-[#DDDED3]/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           title="Do Nosso Blog"
@@ -92,7 +92,7 @@ export default function BlogPreviewSection({ posts }: BlogPreviewSectionProps) {
                       className="object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                   )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1D285E]/90 to-transparent opacity-60" />
+                  <div className="absolute inset-0 bg-linear-to-t from-[#1D285E]/90 to-transparent opacity-60" />
 
                   <div className="absolute top-4 left-4 z-10">
                     <span className="bg-white/90 text-[#1D285E] text-xs font-medium px-3 py-1 rounded-full backdrop-blur-sm">
@@ -114,7 +114,7 @@ export default function BlogPreviewSection({ posts }: BlogPreviewSectionProps) {
                 </div>
 
                 {/* Conteúdo */}
-                <div className="p-6 flex flex-col flex-grow">
+                <div className="p-6 flex flex-col grow">
                   <h3 className="font-bold text-[#1D285E] text-lg mb-3 group-hover:text-[#676B49] transition-colors duration-300 line-clamp-2">
                     {post.title}
                   </h3>
@@ -149,7 +149,7 @@ export default function BlogPreviewSection({ posts }: BlogPreviewSectionProps) {
         >
           <Link
             href="/blog"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#1D285E] to-[#1D285E]/90 text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 border border-[#1D285E]/40 group"
+            className="inline-flex items-center gap-3 px-8 py-4 bg-linear-to-r from-[#1D285E] to-[#1D285E]/90 text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 border border-[#1D285E]/40 group"
           >
             Explorar Todos os Artigos
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />

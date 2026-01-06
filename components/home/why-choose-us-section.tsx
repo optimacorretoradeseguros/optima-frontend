@@ -47,7 +47,7 @@ export default function WhyChooseUsSection() {
   ]
 
   return (
-    <section className="py-20 md:py-28 bg-gradient-to-br from-[#1D285E]/5 via-white to-[#676B49]/5">
+    <section className="py-20 md:py-28 bg-linear-to-br from-[#1D285E]/5 via-white to-[#676B49]/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           title="Porque Escolher a Óptima"
@@ -84,7 +84,7 @@ export default function WhyChooseUsSection() {
                 </p>
 
                 {/* Linha decorativa */}
-                <div className="w-12 h-1 bg-gradient-to-r from-[#1D285E] to-[#676B49] rounded-full mt-6 group-hover:w-16 transition-all duration-300" />
+                <div className="w-12 h-1 bg-linear-to-r from-[#1D285E] to-[#676B49] rounded-full mt-6 group-hover:w-16 transition-all duration-300" />
               </div>
             </motion.div>
           ))}

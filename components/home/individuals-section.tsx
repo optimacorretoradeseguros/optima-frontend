@@ -52,7 +52,7 @@ export default function IndividualsSection() {
   ]
 
   return (
-    <section className="py-20 md:py-28 bg-gradient-to-br from-white via-[#F8F9FA] to-[#DDDED3]/40">
+    <section className="py-20 md:py-28 bg-linear-to-br from-white via-[#F8F9FA] to-[#DDDED3]/40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           title="Proteção para Particulares"
@@ -91,7 +91,7 @@ export default function IndividualsSection() {
             <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
               <Link
                 href="/services/individuals"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#676B49] to-[#676B49]/90 text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 border border-[#676B49]/40 group"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-linear-to-r from-[#676B49] to-[#676B49]/90 text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 border border-[#676B49]/40 group"
               >
                 Conhecer Todas as Opções de Seguros
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
@@ -107,7 +107,7 @@ export default function IndividualsSection() {
               fill
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-white/20 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-t from-white/20 via-transparent to-transparent" />
 
             {/* Card na Imagem */}
             <div className="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-sm rounded-full p-5 shadow-lg border border-white/20">

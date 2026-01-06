@@ -6,7 +6,7 @@ import { Calendar, Phone, Star } from "lucide-react"
 
 export default function FinalCTASection() {
   return (
-    <section className="py-20 md:py-28 bg-gradient-to-br from-white via-[#1D285E] to-[#DDDED3]/40">
+    <section className="py-20 md:py-28 bg-linear-to-br from-white via-[#1D285E] to-[#DDDED3]/40">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-10 left-10 w-4 h-4 bg-white/20 rounded-full animate-pulse" />
@@ -96,7 +96,7 @@ export default function FinalCTASection() {
                 href="/consultar-cotacao"
                 className="group relative inline-flex items-center gap-3 px-8 py-4 bg-white text-[#1D285E] rounded-full font-semibold shadow-2xl hover:shadow-3xl transition-all duration-300 border border-white/20 overflow-hidden"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#1D285E]/5 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                <div className="absolute inset-0 bg-linear-to-r from-transparent via-[#1D285E]/5 to-transparent -skew-x-12 translate-x-full group-hover:translate-x-full transition-transform duration-700" />
 
                 <Calendar className="w-5 h-5 relative" />
                 <span className="relative">Solicite a Sua Cotaçao</span>

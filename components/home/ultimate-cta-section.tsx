@@ -37,7 +37,7 @@ export default function UltimateCTASection({ hideSecondaryAction = false }: Ulti
             />
 
             {/* Grid Pattern Overlay */}
-            <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-10" />
+            <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center mask-image:linear-gradient(180deg,white,rgba(255,255,255,0)) opacity-10" />
 
             {/* ========================================= */}
             {/* Content Container */}

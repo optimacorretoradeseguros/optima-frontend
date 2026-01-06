@@ -206,7 +206,7 @@ export default function CompaniesPage() {
       </section>
 
       {/* Lista Completa de Seguros */}
-      <section className="py-20 md:py-28 bg-gradient-to-b from-white to-[#F8F9FA]">
+      <section className="py-20 md:py-28 bg-linear-to-b from-white to-[#F8F9FA]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader
             title="Soluções de Seguro Empresarial"
@@ -229,7 +229,7 @@ export default function CompaniesPage() {
               >
                 <div className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-[#1D285E]/10 hover:border-[#676B49]/30 h-full">
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-[#1D285E] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                    <div className="w-12 h-12 bg-[#1D285E] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shrink-0">
                       <Icon className="w-6 h-6 text-white" />
                     </div>
                     <div>
@@ -288,7 +288,7 @@ export default function CompaniesPage() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="mt-16 text-center"
           >
-            <div className="bg-gradient-to-r from-[#1D285E]/5 to-[#676B49]/5 rounded-2xl p-8 border border-[#1D285E]/10">
+            <div className="bg-linear-to-r from-[#1D285E]/5 to-[#676B49]/5 rounded-2xl p-8 border border-[#1D285E]/10">
               <div className="flex flex-col md:flex-row items-center justify-between gap-6">
                 <div className="text-left">
                   <h3 className="text-2xl font-bold text-[#1D285E] mb-2">

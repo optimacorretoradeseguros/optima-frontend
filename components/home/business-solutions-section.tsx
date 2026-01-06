@@ -52,7 +52,7 @@ export default function BusinessSolutionsSection() {
   ]
 
   return (
-    <section className="py-20 md:py-28 bg-gradient-to-br from-[#1D285E]/5 via-[#1D285E]/3 to-white">
+    <section className="py-20 md:py-28 bg-linear-to-br from-[#1D285E]/5 via-[#1D285E]/3 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           title="Soluções para Empresas"
@@ -74,7 +74,7 @@ export default function BusinessSolutionsSection() {
               fill
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#1D285E]/20 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-t from-[#1D285E]/20 via-transparent to-transparent" />
 
             {/* Badge na Imagem */}
             <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-sm rounded-full px-4 py-3 shadow-lg">
@@ -109,7 +109,7 @@ export default function BusinessSolutionsSection() {
             <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
               <Link
                 href="/services/companies"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#1D285E] to-[#1D285E]/90 text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 border border-[#1D285E]/40 group"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-linear-to-r from-[#1D285E] to-[#1D285E]/90 text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 border border-[#1D285E]/40 group"
               >
                 Explorar Todas as Soluções
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />

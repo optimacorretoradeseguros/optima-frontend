@@ -47,7 +47,7 @@ export default function WhatWeDoSection() {
   ]
 
   return (
-    <section className="py-20 md:py-28 bg-gradient-to-br from-white via-[#F8F9FA] to-[#DDDED3]/30 overflow-x-hidden">
+    <section className="py-20 md:py-28 bg-linear-to-br from-white via-[#F8F9FA] to-[#DDDED3]/30 overflow-x-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <SectionHeader
