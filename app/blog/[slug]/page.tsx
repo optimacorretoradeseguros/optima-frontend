@@ -52,7 +52,7 @@ export default async function Page({ params }: Props) {
         )}
 
         {/* Overlay Gradients */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#1D285E] via-[#1D285E]/40 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-[#1D285E] via-[#1D285E]/40 to-transparent" />
         <div className="absolute inset-0 bg-black/20" />
 
         {/* Hero Content */}
