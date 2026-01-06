@@ -20,9 +20,9 @@ const cardVariants: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { 
-      duration: 0.6, 
-      ease: "easeOut" 
+    transition: {
+      duration: 0.6,
+      ease: "easeOut"
     },
   },
 }
@@ -49,8 +49,8 @@ export default function WhyChooseUsSection() {
   return (
     <section className="py-20 md:py-28 bg-gradient-to-br from-[#1D285E]/5 via-white to-[#676B49]/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeader 
-          title="Porque Escolher a Óptima" 
+        <SectionHeader
+          title="Porque Escolher a Óptima"
           subtitle="Diferencial no mercado de mediação de seguros"
         />
 
@@ -78,7 +78,7 @@ export default function WhyChooseUsSection() {
                 <h3 className="text-xl font-bold text-[#1D285E] mb-4 group-hover:text-[#676B49] transition-colors duration-300">
                   {benefit.title}
                 </h3>
-                
+
                 <p className="text-[#1D285E]/70 leading-relaxed">
                   {benefit.description}
                 </p>

@@ -3,9 +3,9 @@
 import Link from "next/link"
 import Image from "next/image"
 import { motion, Variants } from "framer-motion"
-import { 
-  CheckCircle2, 
-  Building, 
+import {
+  CheckCircle2,
+  Building,
   ArrowRight,
   UserCheck,
   Users,
@@ -33,9 +33,9 @@ const itemVariants: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { 
-      duration: 0.8, 
-      ease: "easeOut" 
+    transition: {
+      duration: 0.8,
+      ease: "easeOut"
     },
   },
 }
@@ -54,8 +54,8 @@ export default function BusinessSolutionsSection() {
   return (
     <section className="py-20 md:py-28 bg-gradient-to-br from-[#1D285E]/5 via-[#1D285E]/3 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeader 
-          title="Soluções para Empresas" 
+        <SectionHeader
+          title="Soluções para Empresas"
           subtitle="Proteja seu negócio com coberturas adaptadas"
         />
 
@@ -75,7 +75,7 @@ export default function BusinessSolutionsSection() {
               className="object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#1D285E]/20 via-transparent to-transparent" />
-            
+
             {/* Badge na Imagem */}
             <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-sm rounded-full px-4 py-3 shadow-lg">
               <p className="text-sm font-semibold text-[#1D285E]">Empresas</p>
@@ -89,8 +89,8 @@ export default function BusinessSolutionsSection() {
             {/* Lista de Soluções */}
             <ul className="space-y-4">
               {solutions.map(({ label, icon: Icon }) => (
-                <motion.li 
-                  key={label} 
+                <motion.li
+                  key={label}
                   className="flex items-center gap-4 p-4 rounded-full bg-white/50 hover:bg-white/80 transition-all duration-300 group cursor-pointer border border-transparent hover:border-[#1D285E]/10"
                   whileHover={{ x: 8 }}
                 >

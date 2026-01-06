@@ -3,8 +3,8 @@
 import Link from "next/link"
 import Image from "next/image"
 import { motion, Variants } from "framer-motion"
-import { 
-  Heart, 
+import {
+  Heart,
   ArrowRight,
   Car,
   Stethoscope,
@@ -33,9 +33,9 @@ const itemVariants: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { 
-      duration: 0.8, 
-      ease: "easeOut" 
+    transition: {
+      duration: 0.8,
+      ease: "easeOut"
     },
   },
 }
@@ -54,8 +54,8 @@ export default function IndividualsSection() {
   return (
     <section className="py-20 md:py-28 bg-gradient-to-br from-white via-[#F8F9FA] to-[#DDDED3]/40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeader 
-          title="Proteção para Particulares" 
+        <SectionHeader
+          title="Proteção para Particulares"
           subtitle="Seguros pensados para cada momento da sua vida"
         />
 
@@ -71,8 +71,8 @@ export default function IndividualsSection() {
             {/* Lista de Proteções */}
             <ul className="space-y-4">
               {protections.map(({ label, icon: Icon }) => (
-                <motion.li 
-                  key={label} 
+                <motion.li
+                  key={label}
                   className="flex items-center gap-4 p-4 rounded-2xl bg-white/50 hover:bg-white/80 transition-all duration-300 group cursor-pointer border border-transparent hover:border-[#676B49]/10"
                   whileHover={{ x: 8 }}
                 >
@@ -101,14 +101,14 @@ export default function IndividualsSection() {
 
           {/* Imagem */}
           <motion.div variants={itemVariants} className="relative h-96 lg:h-[500px] rounded-3xl overflow-hidden shadow-2xl order-1 lg:order-2">
-            <Image 
-              src="/istockphoto-1256558920-612x612.jpg" 
-              alt="Família feliz desfrutando de momentos especiais" 
-              fill 
-              className="object-cover" 
+            <Image
+              src="/istockphoto-1256558920-612x612.jpg"
+              alt="Família feliz desfrutando de momentos especiais"
+              fill
+              className="object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-white/20 via-transparent to-transparent" />
-            
+
             {/* Card na Imagem */}
             <div className="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-sm rounded-full p-5 shadow-lg border border-white/20">
               <div className="flex items-center gap-3">

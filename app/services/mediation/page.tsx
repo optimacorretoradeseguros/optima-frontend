@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { motion } from "framer-motion"
+import { motion, Variants } from "framer-motion"
 import { CheckCircle2, DollarSign, Users, Clock } from "lucide-react"
 import SectionHeader from "@/components/section-header"
 import ServiceCard from "@/components/service-card"
@@ -18,7 +18,7 @@ const containerVariants = {
   },
 }
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
@@ -29,9 +29,9 @@ const itemVariants = {
 
 export default function MediationPage() {
   return (
-    <div className="w-full pt-16">
+    <div className="w-full pt-20">
       {/* Hero */}
-      <section className="py-12 md:py-20 bg-gradient-to-br from-primary/5 to-secondary/5">
+      <section className="py-12 md:py-20 bg-linear-to-br from-primary/5 to-secondary/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
@@ -277,7 +277,7 @@ export default function MediationPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 md:py-24 bg-gradient-to-r from-primary to-secondary">
+      <section className="py-16 md:py-24 bg-linear-to-r from-primary to-secondary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

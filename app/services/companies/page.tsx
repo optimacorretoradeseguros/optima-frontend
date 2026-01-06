@@ -69,7 +69,7 @@ export default function CompaniesPage() {
     },
     {
       icon: Zap,
-      title: "Contratos Flexíveis", 
+      title: "Contratos Flexíveis",
       description: "Adaptados ao seu negócio com opções de personalização.",
       features: ["Personalização", "Flexibilidade", "Adaptabilidade"]
     },
@@ -82,7 +82,7 @@ export default function CompaniesPage() {
   ]
 
   return (
-    <div className="w-full pt-16">
+    <div className="w-full pt-20">
       {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden bg-[#1D285E]">
         <div className="absolute inset-0">
@@ -116,7 +116,7 @@ export default function CompaniesPage() {
               </div>
             </motion.div>
 
-            <motion.h1 
+            <motion.h1
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#ffffff] leading-tight tracking-tight"
               variants={textVariants}
             >
@@ -125,7 +125,7 @@ export default function CompaniesPage() {
                 Empresas
               </span>
             </motion.h1>
-            
+
             <motion.p
               className="text-xl lg:text-2xl text-[#ffffff]/80 leading-relaxed font-light"
               variants={textVariants}
@@ -158,8 +158,8 @@ export default function CompaniesPage() {
       {/* Benefícios */}
       <section className="py-20 md:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader 
-            title="Vantagens para Empresas" 
+          <SectionHeader
+            title="Vantagens para Empresas"
             subtitle="Soluções que fazem a diferença no seu negócio"
           />
 
@@ -177,23 +177,23 @@ export default function CompaniesPage() {
                 whileHover={{ y: -8, transition: { duration: 0.3 } }}
                 className="group"
               >
-                <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-[#1D285E]/5 hover:border-[#676B49]/20 h-full">
-                  <div className="w-16 h-16 bg-[#1D285E] rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-[#1D285E]/5 hover:border-[#676B49]/20 h-full flex flex-col">
+                  <div className="w-16 h-16 bg-[#1D285E] rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg mx-auto">
                     <benefit.icon className="w-8 h-8 text-white" />
                   </div>
 
                   <h3 className="text-xl font-bold text-[#1D285E] mb-4 group-hover:text-[#676B49] transition-colors duration-300">
                     {benefit.title}
                   </h3>
-                  
+
                   <p className="text-[#1D285E]/70 leading-relaxed mb-6">
                     {benefit.description}
                   </p>
 
-                  <ul className="space-y-2">
+                  <ul className="space-y-2 w-full">
                     {benefit.features.map((feature, idx) => (
                       <li key={idx} className="flex items-center gap-2 text-sm text-[#1D285E]/60">
-                        <div className="w-1.5 h-1.5 bg-[#676B49] rounded-full" />
+                        <div className="w-1.5 h-1.5 bg-[#676B49] rounded-full shrink-0" />
                         {feature}
                       </li>
                     ))}
@@ -208,8 +208,8 @@ export default function CompaniesPage() {
       {/* Lista Completa de Seguros */}
       <section className="py-20 md:py-28 bg-gradient-to-b from-white to-[#F8F9FA]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader 
-            title="Soluções de Seguro Empresarial" 
+          <SectionHeader
+            title="Soluções de Seguro Empresarial"
             subtitle="Coberturas abrangentes para todos os tipos de negócio"
           />
 
@@ -251,8 +251,8 @@ export default function CompaniesPage() {
       {/* Setores que Atendemos */}
       <section className="py-20 md:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader 
-            title="Experiência em Diferentes Setores" 
+          <SectionHeader
+            title="Experiência em Diferentes Setores"
             subtitle="Mais de 500 empresas já confiaram nas nossas soluções"
           />
 
@@ -343,7 +343,7 @@ export default function CompaniesPage() {
                 </span>{" "}
                 hoje?
               </h2>
-              
+
               <p className="text-xl md:text-2xl text-white/80 leading-relaxed max-w-2xl mx-auto">
                 Solicite uma análise personalizada de riscos para sua empresa
               </p>

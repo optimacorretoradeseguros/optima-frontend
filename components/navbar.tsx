@@ -17,7 +17,7 @@ export default function Navbar() {
   }, [pathname])
 
   const navItems = [
-    { label: "Início", href: "/", icon: Home }, 
+    { label: "Início", href: "/", icon: Home },
     { label: "Empresas", href: "/services/companies", icon: Building2 },
     { label: "Particulares", href: "/services/individuals", icon: User },
     { label: "Blog", href: "/blog", icon: FileText },
@@ -39,19 +39,19 @@ export default function Navbar() {
 
   const mobileMenuVariants: Variants = {
     closed: { opacity: 0, height: 0, transition: { duration: 0.3, ease: "easeInOut" } },
-    open:   { opacity: 1, height: "auto", transition: { duration: 0.4, ease: "easeInOut" } }
+    open: { opacity: 1, height: "auto", transition: { duration: 0.4, ease: "easeInOut" } }
   }
 
   const mobileItemVariants: Variants = {
     closed: { opacity: 0, x: -20 },
-    open:   { opacity: 1, x: 0, transition: { duration: 0.3, ease: "easeOut" } }
+    open: { opacity: 1, x: 0, transition: { duration: 0.3, ease: "easeOut" } }
   }
 
   return (
-    <nav className="
-        fixed top-0 w-full z-50 bg-white bg-opacity-30 backdrop-blur-sm
-        border-b border-white/20 shadow-sm
-      ">
+    <nav
+      className="fixed top-0 w-full bg-white shadow-md border-b border-gray-100"
+      style={{ zIndex: 9999 }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
@@ -85,11 +85,10 @@ export default function Navbar() {
                 <motion.div key={item.href} variants={itemVariants}>
                   <Link
                     href={item.href}
-                    className={`relative flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 ${
-                      activeItem === item.href
-                        ? "text-[#1D285E]"
-                        : "text-[#1D285E]/80 hover:text-[#1D285E]"
-                    }`}
+                    className={`relative flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-300 ${activeItem === item.href
+                      ? "text-[#1D285E]"
+                      : "text-[#1D285E]/80 hover:text-[#1D285E]"
+                      }`}
                   >
                     <Icon size={16} className="text-[#1D285E]/60" />
                     {item.label}
@@ -117,7 +116,7 @@ export default function Navbar() {
             <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
               <Link
                 href="/simulation"
-                className="px-6 py-3 rounded-full text-sm font-semibold text-[#DDDED3] bg-[#676B49] hover:bg-[#676B49]/90 transition-all duration-300 shadow-md hover:shadow-lg border border-[#676B49]/20 hover:border-[#676B49]/30"
+                className="px-4 lg:px-6 py-3 rounded-full text-sm font-semibold text-[#DDDED3] bg-[#676B49] hover:bg-[#676B49]/90 transition-all duration-300 shadow-md hover:shadow-lg border border-[#676B49]/20 hover:border-[#676B49]/30 whitespace-nowrap"
               >
                 Solicitar Cotação
               </Link>
@@ -125,7 +124,7 @@ export default function Navbar() {
             <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
               <Link
                 href="/contact"
-                className="px-6 py-3 rounded-full text-sm font-semibold text-[#DDDED3] bg-[#1D285E] hover:bg-[#1D285E]/90 transition-all duration-300 shadow-md hover:shadow-lg border border-[#1D285E]/20 hover:border-[#1D285E]/30"
+                className="px-4 lg:px-6 py-3 rounded-full text-sm font-semibold text-[#DDDED3] bg-[#1D285E] hover:bg-[#1D285E]/90 transition-all duration-300 shadow-md hover:shadow-lg border border-[#1D285E]/20 hover:border-[#1D285E]/30 whitespace-nowrap"
               >
                 Contactar
               </Link>
@@ -134,7 +133,7 @@ export default function Navbar() {
 
           {/* Mobile menu button */}
           <motion.button
-            className="lg:hidden p-3 rounded-lg text-[#1D285E] hover:bg-[#1D285E]/5 transition-colors duration-300"
+            className="lg:hidden p-2.5 rounded-lg text-[#1D285E] bg-gray-50 border border-gray-200 hover:bg-gray-100 transition-colors duration-300 shadow-sm"
             onClick={() => setIsOpen(!isOpen)}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -154,7 +153,7 @@ export default function Navbar() {
               initial="closed"
               animate="open"
               exit="closed"
-              className="lg:hidden border-t border-[#676B49]/10 bg-[#DDDED3]/30 backdrop-blur-sm"
+              className="lg:hidden border-t border-[#676B49]/10 bg-[#F5F5F0]/95 backdrop-blur-md shadow-xl"
             >
               <div className="py-4 space-y-1">
                 {navItems.map((item, idx) => {
@@ -163,11 +162,10 @@ export default function Navbar() {
                     <motion.div key={item.href} variants={mobileItemVariants} initial="closed" animate="open" exit="closed" transition={{ delay: idx * 0.05 }}>
                       <Link
                         href={item.href}
-                        className={`flex items-center gap-3 px-6 py-3 text-base font-medium transition-all duration-300 ${
-                          activeItem === item.href
-                            ? "text-[#1D285E] bg-[#1D285E]/5 border-r-2 border-[#676B49]"
-                            : "text-[#1D285E]/80 hover:text-[#1D285E] hover:bg-[#1D285E]/3"
-                        }`}
+                        className={`flex items-center gap-3 px-6 py-3 text-base font-medium transition-all duration-300 ${activeItem === item.href
+                          ? "text-[#1D285E] bg-[#1D285E]/5 border-r-2 border-[#676B49]"
+                          : "text-[#1D285E]/80 hover:text-[#1D285E] hover:bg-[#1D285E]/3"
+                          }`}
                         onClick={() => setIsOpen(false)}
                       >
                         <Icon size={18} className="text-[#1D285E]/60" />

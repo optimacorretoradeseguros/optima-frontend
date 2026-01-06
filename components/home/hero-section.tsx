@@ -52,10 +52,10 @@ const buttonVariants: Variants = {
 
 export default function HeroSection() {
   return (
-    <section 
+    <section
       className="
         relative min-h-[90vh] pb-4 flex items-center justify-center 
-        overflow-hidden 
+        overflow-x-hidden overflow-y-visible
         bg-[#1D285E]   /* fundo sólido azul */
       "
     >
@@ -82,7 +82,7 @@ export default function HeroSection() {
           animate="visible"
         >
           {/* Texto */}
-          <motion.div 
+          <motion.div
             className="text-center xl:text-left space-y-8"
             variants={textVariants}
           >
@@ -146,8 +146,8 @@ export default function HeroSection() {
                 { label: "Parcerias Estratégicas", icon: Shield, description: "Melhores seguradoras" },
                 { label: "Atendimento Exclusivo", icon: Star, description: "Suporte premium" },
               ].map((item, idx) => (
-                <motion.div 
-                  key={idx} 
+                <motion.div
+                  key={idx}
                   className="flex items-center gap-3 text-white/80"
                   whileHover={{ scale: 1.05 }}
                 >

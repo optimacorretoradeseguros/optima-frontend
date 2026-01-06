@@ -1,10 +1,11 @@
 "use client"
 
 import { motion, Variants } from "framer-motion"
-import { Mail, Phone, MapPin, Clock, Send, User, MessageSquare } from "lucide-react"
+import { Mail, Phone, MapPin, Clock, Send, User, MessageSquare, Navigation, Map, Globe, Mountain } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
 import emailjs from "@emailjs/browser"
+import UltimateCTASection from "@/components/home/ultimate-cta-section"
 
 // Tipando corretamente as variantes
 const containerVariants: Variants = {
@@ -23,8 +24,8 @@ const itemVariants: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { 
-      duration: 0.8, 
+    transition: {
+      duration: 0.8,
       ease: "easeOut"
     },
   },
@@ -38,9 +39,20 @@ export default function ContactPage() {
     subject: "",
     message: "",
   })
-  
+
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
+
+  // Map States
+  const [mapType, setMapType] = useState<"m" | "k" | "p">("k")
+  const [userLocation, setUserLocation] = useState("")
+  const [showDirections, setShowDirections] = useState(false)
+
+  const handleTraceRoute = () => {
+    if (userLocation.trim()) {
+      setShowDirections(true)
+    }
+  }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
@@ -91,13 +103,13 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="w-full pt-16">
+    <div className="w-full pt-20">
       {/* Hero */}
       <section className="py-12 md:py-20 bg-[rgb(230,235,221)]">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }} 
-            animate={{ opacity: 1, y: 0 }} 
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-4xl md:text-5xl font-bold text-[#1D285E] mb-6">Entre em Contacto</h1>
@@ -343,7 +355,7 @@ export default function ContactPage() {
                     <h3 className="text-xl font-bold text-[#1D285E] mb-2">Localização</h3>
                     <p className="text-[#1D285E]/70 mb-4">Visite-nos em Luanda </p>
                     <address className="not-italic text-[#1D285E]">
-                      <p className="font-semibold text-[#676B49]">Rua Comandante Kwenha, Edifício 154, 3º Andar </p>
+                      <p className="font-semibold text-[#676B49]">Óptima-Corretora de Seguros SA</p>
                     </address>
                   </div>
                 </div>
@@ -389,59 +401,89 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Map Placeholder */}
+      {/* Map Section */}
       <section className="py-16 md:py-24 bg-[#f8f9fa]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="bg-white border border-gray-200 rounded-lg overflow-hidden h-96 flex items-center justify-center"
-          >
-            <div className="text-center">
-              <MapPin size={48} className="text-[#1D285E]/30 mx-auto mb-4" />
-              <p className="text-gray-500">
-                Mapa estático preparado - substituir com integração de mapas quando necessário
-              </p>
+          {/* Map Controls Toolbar */}
+          <div className="flex flex-col md:flex-row gap-6 justify-between items-start md:items-center mb-8">
+            {/* Search / Trace Route */}
+            <div className="w-full max-w-md bg-white p-2 rounded-xl shadow-sm border border-gray-200 flex gap-2">
+              <div className="relative flex-grow">
+                <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+                <input
+                  type="text"
+                  placeholder="Digite sua localização para traçar rota..."
+                  className="w-full pl-10 pr-4 py-2 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#676B49] text-[#1D285E] text-sm transition-all"
+                  value={userLocation}
+                  onChange={(e) => {
+                    setUserLocation(e.target.value)
+                    if (!e.target.value) setShowDirections(false)
+                  }}
+                  onKeyDown={(e) => e.key === 'Enter' && handleTraceRoute()}
+                />
+              </div>
+              <button
+                onClick={handleTraceRoute}
+                className="bg-[#676B49] text-white px-4 py-2 rounded-lg hover:bg-[#5a5d3d] transition-colors flex items-center gap-2 text-sm font-medium"
+                title="Traçar Rota"
+              >
+                <Navigation size={16} />
+                <span className="hidden sm:inline">Ir</span>
+              </button>
             </div>
-          </motion.div>
-        </div>
-      </section>
 
-      {/* Quick Links CTA */}
-      <section className="py-16 md:py-24 bg-[#1D285E]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Map Type Controls */}
+            <div className="flex bg-white p-1.5 rounded-xl shadow-sm border border-gray-200 gap-1 overflow-x-auto max-w-full">
+              <button
+                onClick={() => setMapType("m")}
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-2 flex-shrink-0 ${mapType === 'm' ? 'bg-[#1D285E] text-white shadow-sm' : 'hover:bg-gray-50 text-[#1D285E]/70'}`}
+              >
+                <Map size={16} />
+                <span className="hidden sm:inline">Mapa</span>
+              </button>
+              <button
+                onClick={() => setMapType("k")}
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-2 flex-shrink-0 ${mapType === 'k' ? 'bg-[#1D285E] text-white shadow-sm' : 'hover:bg-gray-50 text-[#1D285E]/70'}`}
+              >
+                <Globe size={16} />
+                <span className="hidden sm:inline">Satélite</span>
+              </button>
+              <button
+                onClick={() => setMapType("p")}
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-2 flex-shrink-0 ${mapType === 'p' ? 'bg-[#1D285E] text-white shadow-sm' : 'hover:bg-gray-50 text-[#1D285E]/70'}`}
+              >
+                <Mountain size={16} />
+                <span className="hidden sm:inline">Terreno</span>
+              </button>
+            </div>
+          </div>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center"
+            className="bg-white border border-gray-200 rounded-3xl overflow-hidden h-[400px] md:h-[600px] shadow-2xl"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">Prefere uma abordagem mais rápida?</h2>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/simulation"
-                className="px-8 py-3 bg-white text-[#1D285E] rounded-full font-semibold hover:bg-[#DDDED3] transition-colors"
-              >
-                Solicitar Cotação
-              </Link>
-              <a
-                href="https://wa.me/244933043525"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-8 py-3 bg-white/20 text-white rounded-full font-semibold hover:bg-white/30 transition-colors border border-white"
-              >
-                WhatsApp
-              </a>
-            </div>
-            <p className="text-white/60 text-sm mt-4">
-              
-            </p>
+
+            <iframe
+              src={`https://maps.google.com/maps?${showDirections && userLocation
+                ? `saddr=${encodeURIComponent(userLocation)}&daddr=Óptima-Corretora+de+Seguros+SA,+Edificio+154,+R.+Cmte.+Kwenha,+Luanda`
+                : `q=Óptima-Corretora+de+Seguros+SA,+Edificio+154,+R.+Cmte.+Kwenha,+Luanda`
+                }&t=${mapType}&z=${showDirections ? 13 : 17}&ie=UTF8&iwloc=A&output=embed`}
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
           </motion.div>
         </div>
       </section>
+
+      {/* Extraordinary CTA */}
+      <UltimateCTASection hideSecondaryAction={true} />
     </div>
   )
 }

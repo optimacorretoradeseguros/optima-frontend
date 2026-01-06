@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import { motion, Variants } from "framer-motion"
-import { Target, Eye, Heart, Users, Shield, Star } from "lucide-react"
+import { Target, Eye, Heart, Users, Shield, Star, Clock } from "lucide-react"
 import SectionHeader from "@/components/section-header"
 
 const containerVariants: Variants = {
@@ -36,7 +36,7 @@ const textVariants: Variants = {
 
 export default function AboutPage() {
   return (
-    <div className="w-full pt-16">
+    <div className="w-full pt-20">
       {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden bg-[#1D285E]">
         <div className="absolute inset-0">
@@ -50,34 +50,20 @@ export default function AboutPage() {
           <div className="absolute inset-0 bg-[#1D285E]/70" />
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full h-full flex flex-col justify-center min-h-[60vh]">
           <motion.div
             className="text-center max-w-4xl mx-auto space-y-8"
             initial="hidden"
             animate="visible"
             variants={containerVariants}
           >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="inline-flex items-center gap-3 px-5 py-3 rounded-2xl bg-[#DDDED3]/10 backdrop-blur-md border border-[#DDDED3]/15 shadow-lg"
-            >
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-[#676B49] rounded-full animate-pulse" />
-                <span className="text-sm font-medium text-[#ffffff] tracking-wider uppercase">
-                  Desde 2015 no Mercado
-                </span>
-              </div>
-            </motion.div>
-
-            <motion.h1 
+            <motion.h1
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#ffffff] leading-tight tracking-tight"
               variants={textVariants}
             >
               Sobre a Óptima
             </motion.h1>
-            
+
             <motion.p
               className="text-xl lg:text-2xl text-[#ffffff]/80 leading-relaxed font-light"
               variants={textVariants}
@@ -98,21 +84,38 @@ export default function AboutPage() {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
           >
-            <motion.div 
+            <motion.div
               variants={itemVariants}
               className="relative h-96 lg:h-[500px] rounded-3xl overflow-hidden shadow-2xl"
             >
               <Image
-                src="/logo-optima.jpeg"
+                src="/optima_team.jpg"
                 alt="Equipa Óptima"
                 fill
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-[#1D285E]/20" />
-              
-              <div className="absolute top-6 left-6 bg-white rounded-2xl px-4 py-3 shadow-lg">
-                <p className="text-sm font-semibold text-[#1D285E]">+500 Clientes</p>
-                <p className="text-xs text-[#676B49]">Satisfeitos</p>
+
+              {/* Badge Esquerdo - Desde 2015 */}
+              <div className="absolute bottom-6 left-6 flex items-center gap-3 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-xl shadow-lg">
+                <div className="w-8 h-8 rounded-full bg-[#676B49] flex items-center justify-center text-white">
+                  <Clock className="w-4 h-4" />
+                </div>
+                <div>
+                  <p className="text-[#1D285E] font-bold text-sm leading-none">Desde 2015</p>
+                  <p className="text-[#676B49] text-[10px] uppercase tracking-wider">No Mercado</p>
+                </div>
+              </div>
+
+              {/* Badge Direito - +500 Clientes */}
+              <div className="absolute bottom-6 right-6 flex items-center gap-3 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-xl shadow-lg">
+                <div className="w-8 h-8 rounded-full bg-[#1D285E] flex items-center justify-center text-white">
+                  <Users className="w-4 h-4" />
+                </div>
+                <div className="text-right">
+                  <p className="text-[#1D285E] font-bold text-sm leading-none">+500 Clientes</p>
+                  <p className="text-[#676B49] text-[10px] uppercase tracking-wider">Satisfeitos</p>
+                </div>
               </div>
             </motion.div>
 
@@ -120,7 +123,7 @@ export default function AboutPage() {
               <h2 className="text-3xl md:text-4xl font-bold text-[#1D285E] mb-6">
                 Quem <span className="text-[#676B49]">Somos</span>
               </h2>
-              
+
               <div className="space-y-4 text-[#1D285E]/70 text-lg leading-relaxed">
                 <p>
                   A ÓPTIMA – Corretora de Seguros apresenta os seus cumprimentos e disponibilidade para ser sua parceira em soluções de seguros pessoais e empresariais.
@@ -133,15 +136,15 @@ export default function AboutPage() {
                 </p>
               </div>
 
-              <motion.div 
+              <motion.div
                 className="flex flex-wrap gap-8 pt-6"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
               >
                 {[{ icon: Users, label: "Clientes Ativos", value: "500+" },
-                  { icon: Shield, label: "Seguradoras Parceiras", value: "15+" },
-                  { icon: Star, label: "Anos de Experiência", value: "8+" }].map((item, index) => (
+                { icon: Shield, label: "Seguradoras Parceiras", value: "15+" },
+                { icon: Star, label: "Anos de Experiência", value: "8+" }].map((item, index) => (
                   <div key={index} className="flex items-center gap-3">
                     <div className="icon-glow w-12 h-12 bg-[#1D285E] rounded-full flex items-center justify-center">
                       <item.icon className="w-6 h-6 text-white" />
@@ -161,8 +164,8 @@ export default function AboutPage() {
       {/* Missão, Visão e Valores */}
       <section className="py-20 md:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader 
-            title="Missão, Visão e Valores" 
+          <SectionHeader
+            title="Missão, Visão e Valores"
             subtitle="Os pilares que nos guiam"
           />
 
@@ -190,7 +193,7 @@ export default function AboutPage() {
                 <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-[#1D285E]/5 hover:border-[#676B49]/20 h-full">
 
                   {/* ÍCONE COM EFEITO */}
-                  <div className="icon-glow w-16 h-16 bg-[#1D285E] rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <div className="icon-glow w-16 h-16 bg-[#1D285E] rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 mx-auto">
                     <item.icon className="w-8 h-8 text-white" />
                   </div>
 
@@ -210,8 +213,8 @@ export default function AboutPage() {
       {/* Diferenciais */}
       <section className="py-20 md:py-28 bg-[#F8F9FA]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader 
-            title="Nossos Diferenciais" 
+          <SectionHeader
+            title="Nossos Diferenciais"
             subtitle="O que nos torna únicos no mercado"
           />
 
@@ -226,15 +229,15 @@ export default function AboutPage() {
               icon: Users,
               title: "Consultoria Independente",
               description: "Recomendações baseadas em necessidades reais."
-            },{
+            }, {
               icon: Shield,
-              title: "Parceiros Estratégicos", 
+              title: "Parceiros Estratégicos",
               description: "Relacionamento exclusivo com seguradoras líderes."
-            },{
+            }, {
               icon: Star,
               title: "Atendimento Personalizado",
               description: "Suporte completo em todas as fases."
-            },{
+            }, {
               icon: Heart,
               title: "Acompanhamento Total",
               description: "Do início ao fim do processo, sempre ao lado do cliente."
@@ -243,7 +246,7 @@ export default function AboutPage() {
                 <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-[#1D285E]/5 hover:border-[#676B49]/20 h-full">
 
                   {/* ÍCONE COM GLOW */}
-                  <div className="icon-glow w-14 h-14 bg-[#1D285E] rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <div className="icon-glow w-14 h-14 bg-[#1D285E] rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 mx-auto">
                     <item.icon className="w-7 h-7 text-white" />
                   </div>
 
