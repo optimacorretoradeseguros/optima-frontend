@@ -45,7 +45,7 @@ export default function MediationPage() {
                 A ponte entre você e a proteção ideal. Simplificamos o complexo mundo dos seguros.
               </p>
               <Link
-                href="/simulation"
+                href="/consultar-cotacao"
                 className="inline-block px-8 py-3 bg-secondary text-secondary-foreground rounded-lg font-semibold hover:opacity-90 transition-opacity"
               >
                 Começar Simulação

@@ -115,7 +115,7 @@ export default function HeroSection() {
               {/* Botão primário */}
               <motion.div variants={buttonVariants} whileHover="hover" whileTap="tap">
                 <Link
-                  href="/simulation"
+                  href="/consultar-cotacao"
                   className="group relative flex items-center justify-center px-8 py-4 rounded-full font-semibold overflow-hidden shadow-lg bg-[#676B49]"
                 >
                   <span className="relative z-10 flex items-center gap-3 text-base text-white">

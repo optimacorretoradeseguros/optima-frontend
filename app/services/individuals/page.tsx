@@ -108,7 +108,7 @@ export default function IndividualsPage() {
             >
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Link
-                  href="/simulation"
+                  href="/consultar-cotacao"
                   className="group relative flex items-center justify-center px-8 py-4 rounded-full font-semibold overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500"
                 >
                   <div className="absolute inset-0 w-full h-full bg-[#676B49] transition-opacity duration-300" />

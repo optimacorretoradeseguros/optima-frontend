@@ -97,7 +97,7 @@ export default function UltimateCTASection({ hideSecondaryAction = false }: Ulti
                     >
                         {/* Primary Simulation Button */}
                         <Link
-                            href="/simulation"
+                            href="/consultar-cotacao"
                             className="group relative inline-flex items-center justify-center gap-3 px-8 py-5 bg-[#676B49] text-white rounded-2xl font-bold text-lg shadow-lg shadow-[#676B49]/20 overflow-hidden transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-[#676B49]/30"
                         >
                             <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />

@@ -71,7 +71,7 @@ export default function ExtraordinaryCTA() {
                                 className="flex flex-col sm:flex-row gap-4"
                             >
                                 <Link
-                                    href="/simulation"
+                                    href="/consultar-cotacao"
                                     className="group relative px-8 py-4 bg-[#676B49] text-white rounded-2xl font-bold text-lg overflow-hidden transition-all hover:bg-[#5a5d3d] hover:shadow-lg hover:shadow-[#676B49]/30"
                                 >
                                     <span className="relative z-10 flex items-center gap-2">

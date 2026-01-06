@@ -115,7 +115,7 @@ export default function Navbar() {
           >
             <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
               <Link
-                href="/simulation"
+                href="/consultar-cotacao"
                 className="px-4 lg:px-6 py-3 rounded-full text-sm font-semibold text-[#DDDED3] bg-[#676B49] hover:bg-[#676B49]/90 transition-all duration-300 shadow-md hover:shadow-lg border border-[#676B49]/20 hover:border-[#676B49]/30 whitespace-nowrap"
               >
                 Solicitar Cotação
@@ -177,7 +177,7 @@ export default function Navbar() {
                 <div className="px-6 pt-4 pb-2 border-t border-[#676B49]/10 space-y-3">
                   <motion.div variants={mobileItemVariants} initial="closed" animate="open" exit="closed" transition={{ delay: navItems.length * 0.05 }}>
                     <Link
-                      href="/simulation"
+                      href="/consultar-cotacao"
                       className="block w-full px-4 py-4 rounded-full text-center text-sm font-semibold text-[#DDDED3] bg-[#676B49] hover:bg-[#676B49]/90 transition-all duration-300 shadow-md hover:shadow-lg border border-[#676B49]/20"
                       onClick={() => setIsOpen(false)}
                     >

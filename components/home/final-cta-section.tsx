@@ -12,9 +12,9 @@ export default function FinalCTASection() {
         <div className="absolute top-10 left-10 w-4 h-4 bg-white/20 rounded-full animate-pulse" />
         <div className="absolute bottom-20 right-20 w-6 h-6 bg-white/10 rounded-full animate-bounce" />
         <div className="absolute top-1/2 left-1/4 w-2 h-2 bg-white/30 rounded-full animate-ping" />
-        
+
         {/* Subtle Pattern */}
-        <div 
+        <div
           className="absolute inset-0 opacity-[0.03]"
           style={{
             backgroundImage: `
@@ -56,7 +56,7 @@ export default function FinalCTASection() {
               </span>
               ?
             </h2>
-            
+
             <p className="text-xl md:text-2xl text-white/80 leading-relaxed max-w-2xl mx-auto">
               Fale com um dos nossos consultores especializados hoje mesmo
             </p>
@@ -71,7 +71,7 @@ export default function FinalCTASection() {
           >
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-[#DDDED3] rounded-full" />
-              Consultoria 
+              Consultoria
             </div>
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-[#DDDED3] rounded-full" />
@@ -93,14 +93,14 @@ export default function FinalCTASection() {
             {/* Primary CTA */}
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
-                href="/simulation"
+                href="/consultar-cotacao"
                 className="group relative inline-flex items-center gap-3 px-8 py-4 bg-white text-[#1D285E] rounded-full font-semibold shadow-2xl hover:shadow-3xl transition-all duration-300 border border-white/20 overflow-hidden"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#1D285E]/5 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-                
+
                 <Calendar className="w-5 h-5 relative" />
                 <span className="relative">Solicite a Sua Cotaçao</span>
-              
+
               </Link>
             </motion.div>
 
@@ -112,7 +112,7 @@ export default function FinalCTASection() {
               >
                 <Phone className="w-5 h-5" />
                 Falar Imediatamente
-               
+
               </Link>
             </motion.div>
           </motion.div>
@@ -124,7 +124,7 @@ export default function FinalCTASection() {
             transition={{ duration: 0.6, delay: 0.8 }}
             className="text-white/50 text-sm"
           >
-             Resposta garantida em até 24 horas úteis
+            Resposta garantida em até 24 horas úteis
           </motion.p>
         </motion.div>
       </div>

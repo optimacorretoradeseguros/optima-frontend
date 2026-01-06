@@ -141,7 +141,7 @@ export default function CompaniesPage() {
             >
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Link
-                  href="/simulation"
+                  href="/consultar-cotacao"
                   className="relative flex items-center justify-center px-8 py-4 rounded-full font-semibold shadow-xl hover:shadow-2xl transition-all duration-500 bg-[#676B49] text-white"
                 >
                   <span className="flex items-center gap-3 text-base">
