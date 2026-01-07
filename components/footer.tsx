@@ -45,9 +45,9 @@ export default function Footer() {
 
   return (
     <footer className="relative bg-[#1D285E] border-t border-[#283373] overflow-hidden">
-      
+
       {/* Imagem de fundo */}
-      <div 
+      <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
         style={{
           backgroundImage: "url('https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')",
@@ -59,7 +59,7 @@ export default function Footer() {
 
       {/* Conteúdo */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 md:grid-cols-4 gap-y-6 md:gap-x-12"
           variants={containerVariants}
           initial="hidden"
@@ -68,7 +68,7 @@ export default function Footer() {
         >
           {/* Brand */}
           <motion.div variants={itemVariants} className="flex flex-col items-start pr-4 md:pr-8">
-            <motion.div 
+            <motion.div
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
@@ -92,9 +92,9 @@ export default function Footer() {
             <h4 className="font-semibold text-white mb-4 text-lg">Navegação</h4>
             <ul className="space-y-2">
               {[{ label: "Início", href: "/" },
-                { label: "Sobre", href: "/about" },
-                { label: "Blog", href: "/blog" },
-                { label: "Contactos", href: "/contact" }
+              { label: "Sobre", href: "/about" },
+              { label: "Blog", href: "/blog" },
+              { label: "Contactos", href: "/contact" }
               ].map((item) => (
                 <li key={item.href}>
                   <motion.div whileHover={{ x: 4 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}>
@@ -116,8 +116,8 @@ export default function Footer() {
             <h4 className="font-semibold text-white mb-4 text-lg">Serviços</h4>
             <ul className="space-y-2">
               {[{ label: "Mediação", href: "/services/mediation" },
-                { label: "Empresas", href: "/services/companies" },
-                { label: "Particulares", href: "/services/individuals" },
+              { label: "Empresas", href: "/services/companies" },
+              { label: "Particulares", href: "/services/individuals" },
               ].map((item) => (
                 <li key={item.href}>
                   <motion.div whileHover={{ x: 4 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}>
@@ -144,7 +144,7 @@ export default function Footer() {
                 </div>
                 <span>geral@optima.co.ao</span>
               </motion.li>
-              
+
               {/* Telefones com mesmo tamanho */}
               <motion.li className="space-y-2" whileHover={{ x: 4 }}>
                 <div className="flex items-start gap-3">
@@ -157,7 +157,7 @@ export default function Footer() {
                   </div>
                 </div>
               </motion.li>
-              
+
               <motion.li className="flex items-center gap-3 text-white/70 hover:text-white transition-colors duration-300" whileHover={{ x: 4 }}>
                 <div className="p-2 bg-[#283373] rounded-lg">
                   <MapPin size={16} className="text-white" />

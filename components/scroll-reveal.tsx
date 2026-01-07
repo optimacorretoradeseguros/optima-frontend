@@ -22,7 +22,7 @@ export function ScrollReveal({ children, direction = "up", delay = 0, duration =
     <motion.div
       initial={initialVariants[direction]}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
+      viewport={{ once: true, amount: 0.2 }}
       transition={{ duration, delay }}
     >
       {children}

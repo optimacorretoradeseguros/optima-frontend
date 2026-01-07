@@ -16,8 +16,8 @@ export default function ServiceCard({ icon: Icon, title, description, delay = 0 
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       whileHover={{ y: -8, boxShadow: "0 10px 30px rgba(0,0,0,0.1)" }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay }}
+      viewport={{ once: true, amount: 0.1 }}
+      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
       className="bg-card border border-border rounded-lg p-6 cursor-pointer group"
     >
       <motion.div
@@ -36,7 +36,7 @@ export default function ServiceCard({ icon: Icon, title, description, delay = 0 
 interface ButtonProps {
   titulo: string
 }
-export function Button ({titulo}: ButtonProps){
+export function Button({ titulo }: ButtonProps) {
   return (
     <h1>{titulo} </h1>
   )

@@ -44,7 +44,7 @@ export default function ExtraordinaryCTA() {
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                transition={{ duration: 0.8 }}
+                                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                             >
                                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#676B49]/20 border border-[#676B49]/30 text-[#bbc096] text-sm font-medium mb-6">
                                     <Shield className="w-4 h-4" />

@@ -35,7 +35,7 @@ const itemVariants: Variants = {
     y: 0,
     transition: {
       duration: 0.8,
-      ease: "easeOut"
+      ease: [0.22, 1, 0.36, 1]
     },
   },
 }
@@ -64,7 +64,7 @@ export default function IndividualsSection() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, amount: 0.2 }}
         >
           {/* Conteúdo */}
           <motion.div variants={itemVariants} className="space-y-8 order-2 lg:order-1">

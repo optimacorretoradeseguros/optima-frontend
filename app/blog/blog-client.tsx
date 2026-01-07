@@ -44,7 +44,7 @@ const itemVariants: Variants = {
     visible: {
         opacity: 1,
         y: 0,
-        transition: { duration: 0.8, ease: "easeOut" },
+        transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
     },
 }
 
@@ -53,7 +53,7 @@ const textVariants: Variants = {
     visible: {
         opacity: 1,
         y: 0,
-        transition: { duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] },
+        transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] },
     },
 }
 
@@ -216,8 +216,8 @@ export default function BlogClient({ initialPosts }: BlogClientProps) {
                                 key={post.id}
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.4 }}
-                                whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                                whileHover={{ y: -8, transition: { duration: 0.3, ease: "easeOut" } }}
                                 className="group"
                             >
                                 <Link href={`/blog/${post.slug}`}>
