@@ -11,7 +11,7 @@ export async function fetchPosts() {
     }
 
     const res = await fetch(process.env.NEXT_PUBLIC_HYGRAPH_API_URL, {
-      method: "POSTs",
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${HYGRAPH_API_TOKEN}`,
