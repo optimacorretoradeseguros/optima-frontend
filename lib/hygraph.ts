@@ -1,8 +1,8 @@
 // lib/hygraph.ts
 
 export const HYGRAPH_API_URL = process.env.NEXT_PUBLIC_HYGRAPH_API_URL as string;
-export const HYGRAPH_API_TOKEN = process.env.NEXT_PUBLIC_HYGRAPH_API_TOKEN as string;
-// lib/hygraph.ts
+export const HYGRAPH_API_TOKEN = (process.env.HYGRAPH_API_TOKEN || process.env.NEXT_PUBLIC_HYGRAPH_API_TOKEN) as string;
+
 export async function fetchPosts() {
   try {
     if (!process.env.NEXT_PUBLIC_HYGRAPH_API_URL) {
@@ -14,7 +14,7 @@ export async function fetchPosts() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_HYGRAPH_API_TOKEN}`,
+        Authorization: `Bearer ${HYGRAPH_API_TOKEN}`,
       },
       body: JSON.stringify({
         query: `
@@ -61,7 +61,7 @@ export async function fetchPostBySlug(slug: string) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_HYGRAPH_API_TOKEN}`,
+        Authorization: `Bearer ${HYGRAPH_API_TOKEN}`,
       },
       body: JSON.stringify({
         query: `
