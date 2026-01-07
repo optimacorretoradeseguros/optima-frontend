@@ -61,34 +61,41 @@ export default function BlogClient({ initialPosts }: BlogClientProps) {
     const [searchTerm, setSearchTerm] = useState("")
     const [selectedCategory, setSelectedCategory] = useState("Todos")
 
-    // Use initialPosts directly
-    const posts = initialPosts
+    // Use initialPosts directly, defaulting to empty array
+    const posts = initialPosts || []
 
-    // Extrair categorias únicas dos posts
-    const categories = ["Todos", ...new Set(posts.map((post) => post.category))]
+    // Extrair categorias únicas dos posts (ensure posts exists)
+    const categories = ["Todos", ...new Set(posts.map((post) => post?.category).filter(Boolean))]
 
     // Filtrar posts baseado na pesquisa e categoria
     const filteredPosts = posts.filter((post) => {
+        if (!post) return false
+
         const term = searchTerm.toLowerCase().trim()
         const matchesCategory = selectedCategory === "Todos" || post.category === selectedCategory
 
         if (!term) return matchesCategory
 
         const matchesSearch =
-            post.title.toLowerCase().includes(term) ||
-            post.excerpt.toLowerCase().includes(term)
+            (post.title?.toLowerCase() || "").includes(term) ||
+            (post.excerpt?.toLowerCase() || "").includes(term)
 
         return matchesSearch && matchesCategory
     })
 
     // Formatar data para exibição
     const formatDate = (dateString: string) => {
-        const date = new Date(dateString)
-        return date.toLocaleDateString("pt-AO", {
-            day: "numeric",
-            month: "long",
-            year: "numeric"
-        })
+        if (!dateString) return ""
+        try {
+            const date = new Date(dateString)
+            return date.toLocaleDateString("pt-AO", {
+                day: "numeric",
+                month: "long",
+                year: "numeric"
+            })
+        } catch {
+            return ""
+        }
     }
 
     return (
@@ -224,10 +231,10 @@ export default function BlogClient({ initialPosts }: BlogClientProps) {
                                     <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-[#1D285E]/5 hover:border-[#676B49]/20 overflow-hidden h-full">
                                         {/* Thumbnail */}
                                         <div className="relative h-48 overflow-hidden">
-                                            {post.thumbnail ? (
+                                            {post.thumbnail?.url ? (
                                                 <img
                                                     src={post.thumbnail.url}
-                                                    alt={post.title}
+                                                    alt={post.title || 'Artigo do Blog'}
                                                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                                 />
                                             ) : (
@@ -235,7 +242,7 @@ export default function BlogClient({ initialPosts }: BlogClientProps) {
                                             )}
                                             <div className="absolute top-4 left-4">
                                                 <span className="bg-white/90 text-[#1D285E] text-xs font-medium px-3 py-1 rounded-full">
-                                                    {post.category}
+                                                    {post.category || 'Geral'}
                                                 </span>
                                             </div>
                                             <div className="absolute bottom-4 left-4 right-4">
@@ -244,10 +251,12 @@ export default function BlogClient({ initialPosts }: BlogClientProps) {
                                                         <Calendar className="w-3 h-3" />
                                                         {formatDate(post.date)}
                                                     </div>
-                                                    <div className="flex items-center gap-1">
-                                                        <Users className="w-3 h-3" />
-                                                        {post.readTime}
-                                                    </div>
+                                                    {post.readTime && (
+                                                        <div className="flex items-center gap-1">
+                                                            <Users className="w-3 h-3" />
+                                                            {post.readTime}
+                                                        </div>
+                                                    )}
                                                 </div>
                                             </div>
                                         </div>
@@ -255,11 +264,11 @@ export default function BlogClient({ initialPosts }: BlogClientProps) {
                                         {/* Content */}
                                         <div className="p-6">
                                             <h3 className="font-bold text-[#1D285E] text-lg mb-3 group-hover:text-[#676B49] transition-colors duration-300 line-clamp-2">
-                                                {post.title}
+                                                {post.title || 'Sem título'}
                                             </h3>
 
                                             <p className="text-[#1D285E]/70 text-sm mb-4 leading-relaxed line-clamp-2">
-                                                {post.excerpt}
+                                                {post.excerpt || ''}
                                             </p>
 
                                             {/* CTA */}

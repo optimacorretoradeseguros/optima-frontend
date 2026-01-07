@@ -4,14 +4,20 @@ export const HYGRAPH_API_URL = process.env.NEXT_PUBLIC_HYGRAPH_API_URL as string
 export const HYGRAPH_API_TOKEN = process.env.NEXT_PUBLIC_HYGRAPH_API_TOKEN as string;
 // lib/hygraph.ts
 export async function fetchPosts() {
-  const res = await fetch(process.env.NEXT_PUBLIC_HYGRAPH_API_URL!, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.NEXT_PUBLIC_HYGRAPH_API_TOKEN}`,
-    },
-    body: JSON.stringify({
-      query: `
+  try {
+    if (!process.env.NEXT_PUBLIC_HYGRAPH_API_URL) {
+      console.error("Missing NEXT_PUBLIC_HYGRAPH_API_URL");
+      return [];
+    }
+
+    const res = await fetch(process.env.NEXT_PUBLIC_HYGRAPH_API_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_HYGRAPH_API_TOKEN}`,
+      },
+      body: JSON.stringify({
+        query: `
         query Posts {
           posts(orderBy: date_DESC) {
             id
@@ -30,12 +36,21 @@ export async function fetchPosts() {
           }
         }
       `,
-    }),
-  })
+      }),
+      next: { revalidate: 60 }
+    })
 
-  
-  const { data } = await res.json()
-  return data.posts
+    if (!res.ok) {
+      console.error(`Failed to fetch posts: ${res.status} ${res.statusText}`);
+      return [];
+    }
+
+    const { data } = await res.json()
+    return data?.posts || []
+  } catch (error) {
+    console.error("Error fetching posts:", error);
+    return [];
+  }
 }
 
 export async function fetchPostBySlug(slug: string) {
