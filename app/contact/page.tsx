@@ -4,7 +4,6 @@ import { motion, Variants } from "framer-motion"
 import { Mail, Phone, MapPin, Clock, Send, User, MessageSquare, Navigation, Map, Globe, Mountain } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
-import emailjs from "@emailjs/browser"
 import UltimateCTASection from "@/components/home/ultimate-cta-section"
 
 // Tipando corretamente as variantes
@@ -59,47 +58,42 @@ export default function ContactPage() {
     setFormData(prev => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
     setSubmitStatus("idle")
 
-    const templateParams = {
-      name: formData.name,
-      email: formData.email,
-      phone: formData.phone,
-      subject: formData.subject,
-      message: formData.message,
-      time: new Date().toLocaleString(),
-      title: formData.subject
-    }
+    // Montar o corpo do email
+    const emailBody = `Nome: ${formData.name}
+Email: ${formData.email}
+Telefone: ${formData.phone}
+Assunto: ${formData.subject}
 
-    try {
-      await emailjs.send(
-        "service_mvwnm67",       // Service ID
-        "template_byegn3m",      // Template ID
-        templateParams,
-        "VkpjXmrL4ruzk8sjk"      // Public Key
-      )
+Mensagem:
+${formData.message}`;
 
-      setSubmitStatus("success")
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        subject: "",
-        message: "",
-      })
+    // Codificar o assunto e corpo
+    const subject = encodeURIComponent(formData.subject || "Novo Contacto")
+    const body = encodeURIComponent(emailBody)
 
-      setTimeout(() => {
-        setSubmitStatus("idle")
-      }, 5000)
-    } catch (error) {
-      console.error("EmailJS error:", error)
-      setSubmitStatus("error")
-    } finally {
+    // Abrir Gmail com os parâmetros preenchidos
+    const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=geral@optima.co.ao&subject=${subject}&body=${body}`
+    
+    window.open(gmailLink, "_blank")
+
+    setSubmitStatus("success")
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      subject: "",
+      message: "",
+    })
+
+    setTimeout(() => {
+      setSubmitStatus("idle")
       setIsSubmitting(false)
-    }
+    }, 3000)
   }
 
   return (
