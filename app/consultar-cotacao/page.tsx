@@ -4,7 +4,6 @@ import type React from "react";
 import { useState } from "react";
 import { motion, Variants } from "framer-motion";
 import { CheckCircle2, AlertCircle } from "lucide-react";
-import emailjs from "@emailjs/browser";
 
 // Variantes para animação (motion)
 const containerVariants: Variants = {
@@ -96,46 +95,46 @@ export default function SimulationPage() {
     return Object.keys(newErrors).length === 0;
   };
 
-  // Função para submeter o formulário
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  // Função para submeter o formulário e abrir Gmail
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!validateForm()) return;
 
     setIsSending(true);
 
-    try {
-      await emailjs.send(
-        "service_mvwnm67",   // ID do serviço
-        "template_uk94aha",   // ID do template
-        {
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          type: formData.type,
-          insuranceType: formData.insuranceType,
-          message: formData.message,
-        },
-        "VkpjXmrL4ruzk8sjk"  // Sua chave pública
-      );
+    // Montar o corpo do email
+    const emailBody = `Nome: ${formData.name}
+Email: ${formData.email}
+Telefone: ${formData.phone}
+Tipo de Cliente: ${formData.type === "individual" ? "Particular" : "Empresa"}
+Tipo de Seguro: ${formData.insuranceType}
 
-      setIsSubmitted(true);
+Mensagem:
+${formData.message}`;
 
-      setTimeout(() => {
-        setIsSubmitted(false);
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          type: "individual",
-          insuranceType: "auto-liability",
-          message: "",
-        });
-      }, 5000);
-    } catch (error) {
-      alert("Erro ao enviar a cotação. Tente novamente.");
-    } finally {
+    // Codificar o assunto e corpo
+    const subject = encodeURIComponent("Pedido de Cotação de Seguro");
+    const body = encodeURIComponent(emailBody);
+
+    // Abrir Gmail com os parâmetros preenchidos
+    const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=cotacao@optima.co.ao&subject=${subject}&body=${body}`;
+    
+    window.open(gmailLink, "_blank");
+
+    setIsSubmitted(true);
+
+    setTimeout(() => {
+      setIsSubmitted(false);
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        type: "individual",
+        insuranceType: "auto-liability",
+        message: "",
+      });
       setIsSending(false);
-    }
+    }, 3000);
   };
 
   return (
