@@ -1,11 +1,13 @@
-"use client";  // Diretriz para garantir que este componente seja renderizado no cliente
+"use client";
 
 import type React from "react";
 import { useState } from "react";
 import { motion, Variants } from "framer-motion";
 import { CheckCircle2, AlertCircle } from "lucide-react";
 
-// Variantes para animação (motion)
+/* =========================
+   ANIMAÇÕES
+========================= */
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
@@ -26,6 +28,29 @@ const itemVariants: Variants = {
   },
 };
 
+/* =========================
+   ABRIR CLIENTE DE EMAIL
+========================= */
+const openEmailClient = (subject: string, body: string) => {
+  const to = "cotacao@optima.co.ao";
+
+  const encodedSubject = encodeURIComponent(subject);
+  const encodedBody = encodeURIComponent(body);
+
+  const gmailWebLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${to}&subject=${encodedSubject}&body=${encodedBody}`;
+  const mailtoLink = `mailto:${to}?subject=${encodedSubject}&body=${encodedBody}`;
+
+  const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+  if (isMobile) {
+    // Mobile → app de email padrão (Gmail se for padrão)
+    window.location.href = mailtoLink;
+  } else {
+    // Desktop → Gmail Web
+    window.open(gmailWebLink, "_blank");
+  }
+};
+
 export default function SimulationPage() {
   const [formData, setFormData] = useState({
     name: "",
@@ -40,7 +65,9 @@ export default function SimulationPage() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSending, setIsSending] = useState(false);
 
-  // Opções de seguro para Particulares
+  /* =========================
+     OPÇÕES DE SEGURO
+  ========================= */
   const individualOptions = [
     { value: "auto-liability", label: "Responsabilidade Civil (Automóvel)" },
     { value: "auto-comprehensive", label: "Contra Todos os Riscos (Automóvel)" },
@@ -48,12 +75,11 @@ export default function SimulationPage() {
     { value: "travel", label: "Viagem" },
     { value: "home-multi", label: "Multirisco Habitação" },
     { value: "fire-multi", label: "Multirisco Incêndio" },
-    { value: "work-accident", label: "Acidente de Trabalho e Doenças Profissionais (Individual)" }
+    { value: "work-accident", label: "Acidente de Trabalho (Individual)" },
   ];
 
-  // Opções de seguro para Empresas
   const companyOptions = [
-    { value: "work-accident-group", label: "Acidentes de Trabalho e Doenças Profissionais" },
+    { value: "work-accident-group", label: "Acidentes de Trabalho" },
     { value: "personal-accident-group", label: "Acidentes Pessoais (Grupo)" },
     { value: "travel-group", label: "Viagem (Grupo)" },
     { value: "marine", label: "Marítimo / Embarcações" },
@@ -61,24 +87,21 @@ export default function SimulationPage() {
     { value: "drones", label: "Drones" },
     { value: "liability", label: "Responsabilidade Civil" },
     { value: "business-multi", label: "Multirisco Empresa" },
-    { value: "home-multi-business", label: "Multirisco Habitação" },
-    { value: "machinery", label: "Casco / Maquinaria / Equipamentos" },
     { value: "life-group", label: "Vida Grupo" },
-    { value: "health-group", label: "Saúde Grupo" }
+    { value: "health-group", label: "Saúde Grupo" },
   ];
 
-  // Função para tratar as mudanças nos inputs do formulário
+  /* =========================
+     HANDLERS
+  ========================= */
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-    if (errors[name]) {
-      setErrors((prev) => ({ ...prev, [name]: "" }));
-    }
+    if (errors[name]) setErrors((prev) => ({ ...prev, [name]: "" }));
   };
 
-  // Função para validar os dados do formulário
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
 
@@ -95,14 +118,12 @@ export default function SimulationPage() {
     return Object.keys(newErrors).length === 0;
   };
 
-  // Função para submeter o formulário e abrir Gmail
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!validateForm()) return;
 
     setIsSending(true);
 
-    // Montar o corpo do email
     const emailBody = `Nome: ${formData.name}
 Email: ${formData.email}
 Telefone: ${formData.phone}
@@ -112,14 +133,7 @@ Tipo de Seguro: ${formData.insuranceType}
 Mensagem:
 ${formData.message}`;
 
-    // Codificar o assunto e corpo
-    const subject = encodeURIComponent("Pedido de Cotação de Seguro");
-    const body = encodeURIComponent(emailBody);
-
-    // Abrir Gmail com os parâmetros preenchidos
-    const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=cotacao@optima.co.ao&subject=${subject}&body=${body}`;
-    
-    window.open(gmailLink, "_blank");
+    openEmailClient("Pedido de Cotação de Seguro", emailBody);
 
     setIsSubmitted(true);
 
@@ -137,48 +151,45 @@ ${formData.message}`;
     }, 3000);
   };
 
+  /* =========================
+     JSX
+  ========================= */
   return (
     <div className="w-full pt-16">
       {/* Hero */}
       <section className="py-12 md:py-20 bg-[rgb(230,235,221)]">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            transition={{ duration: 0.8 }}
-          >
-            <h1 className="text-4xl md:text-5xl font-bold text-[#1D285E] mb-6">Solicite a Sua Cotação!</h1>
-            <p className="text-xl text-[#1D285E]/70">
-              Receba uma cotação personalizada dos nossos especialistas em seguros
-            </p>
-          </motion.div>
+        <div className="max-w-3xl mx-auto text-center px-4">
+          <h1 className="text-4xl font-bold text-[#1D285E] mb-4">
+            Solicite a Sua Cotação!
+          </h1>
+          <p className="text-[#1D285E]/70">
+            Receba uma cotação personalizada dos nossos especialistas
+          </p>
         </div>
       </section>
 
-      {/* Formulário */}
-      <section className="py-16 md:py-24">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Form */}
+      <section className="py-16">
+        <div className="max-w-2xl mx-auto px-4">
           {!isSubmitted ? (
             <motion.form
               onSubmit={handleSubmit}
               variants={containerVariants}
               initial="hidden"
               animate="visible"
-              className="bg-white border border-gray-200 rounded-lg p-8 md:p-12"
+              className="bg-white border rounded-lg p-8"
             >
               {/* Nome */}
               <motion.div variants={itemVariants} className="mb-6">
-                <label className="block text-sm font-semibold text-[#1D285E] mb-2">Nome Completo *</label>
                 <input
-                  type="text"
                   name="name"
+                  placeholder="Nome completo"
                   value={formData.name}
                   onChange={handleChange}
-                  className={`w-full px-4 py-3 border rounded-full focus:ring-2 focus:ring-[#676B49] ${errors.name ? "border-red-500" : "border-gray-300"}`}
-                  placeholder="Seu nome completo"
+                  className="w-full px-4 py-3 border rounded-full"
                 />
                 {errors.name && (
-                  <p className="text-red-500 text-sm mt-2 flex items-center gap-2">
+                  <p className="text-red-500 text-sm mt-2 flex gap-2">
                     <AlertCircle size={16} /> {errors.name}
                   </p>
                 )}
@@ -186,17 +197,15 @@ ${formData.message}`;
 
               {/* Email */}
               <motion.div variants={itemVariants} className="mb-6">
-                <label className="block text-sm font-semibold text-[#1D285E] mb-2">Email *</label>
                 <input
-                  type="email"
                   name="email"
+                  placeholder="Email"
                   value={formData.email}
                   onChange={handleChange}
-                  className={`w-full px-4 py-3 border rounded-full focus:ring-2 focus:ring-[#676B49] ${errors.email ? "border-red-500" : "border-gray-300"}`}
-                  placeholder="seu.email@exemplo.com"
+                  className="w-full px-4 py-3 border rounded-full"
                 />
                 {errors.email && (
-                  <p className="text-red-500 text-sm mt-2 flex items-center gap-2">
+                  <p className="text-red-500 text-sm mt-2 flex gap-2">
                     <AlertCircle size={16} /> {errors.email}
                   </p>
                 )}
@@ -204,119 +213,50 @@ ${formData.message}`;
 
               {/* Telefone */}
               <motion.div variants={itemVariants} className="mb-6">
-                <label className="block text-sm font-semibold text-[#1D285E] mb-2">Telefone *</label>
                 <input
-                  type="tel"
                   name="phone"
+                  placeholder="Telefone"
                   value={formData.phone}
                   onChange={handleChange}
-                  className={`w-full px-4 py-3 border rounded-full focus:ring-2 focus:ring-[#676B49] ${errors.phone ? "border-red-500" : "border-gray-300"}`}
-                  placeholder="+244 912 345 678"
+                  className="w-full px-4 py-3 border rounded-full"
                 />
                 {errors.phone && (
-                  <p className="text-red-500 text-sm mt-2 flex items-center gap-2">
+                  <p className="text-red-500 text-sm mt-2 flex gap-2">
                     <AlertCircle size={16} /> {errors.phone}
                   </p>
                 )}
               </motion.div>
 
-              {/* Tipo cliente */}
-              <motion.div variants={itemVariants} className="mb-6">
-                <label className="block text-sm font-semibold text-[#1D285E] mb-2">Tipo de Cliente</label>
-                <div className="grid grid-cols-2 gap-4">
-                  <button
-                    type="button"
-                    onClick={() => setFormData((prev) => ({ ...prev, type: "individual", insuranceType: "auto-liability" }))}
-                    className={`px-4 py-3 rounded-full border-2 font-medium ${formData.type === "individual" ? "border-[#676B49] bg-[#676B49]/10 text-[#676B49]" : "border-gray-300 text-[#1D285E]"}`}
-                  >
-                    Particular
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => setFormData((prev) => ({ ...prev, type: "company", insuranceType: "work-accident-group" }))}
-                    className={`px-4 py-3 rounded-full border-2 font-medium ${formData.type === "company" ? "border-[#676B49] bg-[#676B49]/10 text-[#676B49]" : "border-gray-300 text-[#1D285E]"}`}
-                  >
-                    Empresa
-                  </button>
-                </div>
-              </motion.div>
-
-              {/* Tipo de seguro */}
-              <motion.div variants={itemVariants} className="mb-6">
-                <label className="block text-sm font-semibold text-[#1D285E] mb-2">Tipo de Seguro</label>
-                <select
-                  name="insuranceType"
-                  value={formData.insuranceType}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-full focus:ring-2 focus:ring-[#676B49]"
-                >
-                  {formData.type === "individual" ? (
-                    <>
-                      {individualOptions.map((option) => (
-                        <option key={option.value} value={option.value}>
-                          {option.label}
-                        </option>
-                      ))}
-                    </>
-                  ) : (
-                    <>
-                      {companyOptions.map((option) => (
-                        <option key={option.value} value={option.value}>
-                          {option.label}
-                        </option>
-                      ))}
-                    </>
-                  )}
-                </select>
-              </motion.div>
-
               {/* Mensagem */}
-              <motion.div variants={itemVariants} className="mb-8">
-                <label className="block text-sm font-semibold text-[#1D285E] mb-2">Detalhes Adicionais</label>
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  rows={4}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#676B49]"
-                  placeholder="Conte-nos mais sobre o que procura..."
-                />
-              </motion.div>
+              <motion.textarea
+                variants={itemVariants}
+                name="message"
+                rows={4}
+                placeholder="Detalhes adicionais"
+                value={formData.message}
+                onChange={handleChange}
+                className="w-full px-4 py-3 border rounded-lg mb-6"
+              />
 
-              {/* Botão */}
               <motion.button
                 variants={itemVariants}
                 type="submit"
                 disabled={isSending}
-                className="w-full px-8 py-4 bg-[#676B49] text-white rounded-full font-semibold hover:bg-[#5a5d3d] transition-colors disabled:opacity-50"
+                className="w-full py-4 bg-[#676B49] text-white rounded-full font-semibold disabled:opacity-50"
               >
                 {isSending ? "A enviar..." : "Solicitar Cotação"}
               </motion.button>
             </motion.form>
           ) : (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="bg-green-50 border-2 border-green-200 rounded-lg p-8 text-center"
-            >
-              <div className="flex justify-center mb-4">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
-                  <CheckCircle2 size={32} className="text-green-600" />
-                </div>
-              </div>
-
-              <h2 className="text-2xl font-bold text-green-900 mb-4">
+            <div className="bg-green-50 border p-8 rounded-lg text-center">
+              <CheckCircle2 size={40} className="mx-auto text-green-600 mb-4" />
+              <h2 className="text-xl font-bold text-green-900">
                 Cotação solicitada com sucesso!
               </h2>
-
-              <p className="text-green-800 mb-6">
-                Em breve um consultor entrará em contacto consigo com a sua cotação personalizada.
-              </p>
-            </motion.div>
+            </div>
           )}
         </div>
       </section>
     </div>
   );
-} 
+}

@@ -2,11 +2,10 @@
 
 import { motion, Variants } from "framer-motion"
 import { Mail, Phone, MapPin, Clock, Send, User, MessageSquare, Navigation, Map, Globe, Mountain } from "lucide-react"
-import Link from "next/link"
 import { useState } from "react"
 import UltimateCTASection from "@/components/home/ultimate-cta-section"
 
-// Tipando corretamente as variantes
+// Variantes Framer Motion
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
@@ -58,28 +57,38 @@ export default function ContactPage() {
     setFormData(prev => ({ ...prev, [name]: value }))
   }
 
+  // Função para detectar se é mobile
+  const isMobile = () => {
+    if (typeof navigator === "undefined") return false
+    return /Mobi|Android|iPhone|iPad|iPod|Windows Phone/i.test(navigator.userAgent)
+  }
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
     setSubmitStatus("idle")
 
-    // Montar o corpo do email
+    // Montar corpo do email
     const emailBody = `Nome: ${formData.name}
 Email: ${formData.email}
 Telefone: ${formData.phone}
 Assunto: ${formData.subject}
 
 Mensagem:
-${formData.message}`;
+${formData.message}`
 
-    // Codificar o assunto e corpo
     const subject = encodeURIComponent(formData.subject || "Novo Contacto")
     const body = encodeURIComponent(emailBody)
 
-    // Abrir Gmail com os parâmetros preenchidos
-    const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=geral@optima.co.ao&subject=${subject}&body=${body}`
-    
-    window.open(gmailLink, "_blank")
+    if (isMobile()) {
+      // Mobile → app de email padrão
+      const mailtoLink = `mailto:geral@optima.co.ao?subject=${subject}&body=${body}`
+      window.location.href = mailtoLink
+    } else {
+      // Desktop → Gmail Web
+      const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=geral@optima.co.ao&su=${subject}&body=${body}`
+      window.open(gmailLink, "_blank")
+    }
 
     setSubmitStatus("success")
     setFormData({
@@ -406,65 +415,47 @@ ${formData.message}`;
                 <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
                 <input
                   type="text"
-                  placeholder="Digite sua localização para traçar rota..."
-                  className="w-full pl-10 pr-4 py-2 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#676B49] text-[#1D285E] text-sm transition-all"
+                  placeholder="Digite sua localização"
+                  className="w-full pl-8 pr-4 py-2 border border-gray-300 rounded-xl focus:border-[#676B49] focus:ring-2 focus:ring-[#676B49]/20 outline-none"
                   value={userLocation}
-                  onChange={(e) => {
-                    setUserLocation(e.target.value)
-                    if (!e.target.value) setShowDirections(false)
-                  }}
-                  onKeyDown={(e) => e.key === 'Enter' && handleTraceRoute()}
+                  onChange={(e) => setUserLocation(e.target.value)}
                 />
               </div>
               <button
                 onClick={handleTraceRoute}
-                className="bg-[#676B49] text-white px-4 py-2 rounded-lg hover:bg-[#5a5d3d] transition-colors flex items-center gap-2 text-sm font-medium"
-                title="Traçar Rota"
+                className="px-4 py-2 bg-[#676B49] text-white font-semibold rounded-xl hover:bg-[#5a5d3d] transition"
               >
-                <Navigation size={16} />
-                <span className="hidden sm:inline">Ir</span>
+                Rastrear
               </button>
             </div>
 
-            {/* Map Type Controls */}
-            <div className="flex bg-white p-1.5 rounded-xl shadow-sm border border-gray-200 gap-1 overflow-x-auto max-w-full">
+            {/* Map Type Selector */}
+            <div className="bg-white border border-gray-200 rounded-xl shadow-sm flex overflow-hidden">
               <button
+                className={`px-4 py-2 ${mapType === "m" ? "bg-[#676B49] text-white" : "text-gray-700"} font-semibold`}
                 onClick={() => setMapType("m")}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-2 shrink-0 ${mapType === 'm' ? 'bg-[#1D285E] text-white shadow-sm' : 'hover:bg-gray-50 text-[#1D285E]/70'}`}
               >
-                <Map size={16} />
-                <span className="hidden sm:inline">Mapa</span>
+                Mapa
               </button>
               <button
+                className={`px-4 py-2 ${mapType === "k" ? "bg-[#676B49] text-white" : "text-gray-700"} font-semibold`}
                 onClick={() => setMapType("k")}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-2 shrink-0 ${mapType === 'k' ? 'bg-[#1D285E] text-white shadow-sm' : 'hover:bg-gray-50 text-[#1D285E]/70'}`}
               >
-                <Globe size={16} />
-                <span className="hidden sm:inline">Satélite</span>
+                Satélite
               </button>
               <button
+                className={`px-4 py-2 ${mapType === "p" ? "bg-[#676B49] text-white" : "text-gray-700"} font-semibold`}
                 onClick={() => setMapType("p")}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-2 shrink-0 ${mapType === 'p' ? 'bg-[#1D285E] text-white shadow-sm' : 'hover:bg-gray-50 text-[#1D285E]/70'}`}
               >
-                <Mountain size={16} />
-                <span className="hidden sm:inline">Terreno</span>
+                Híbrido
               </button>
             </div>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="bg-white border border-gray-200 rounded-3xl overflow-hidden h-[400px] md:h-[600px] shadow-2xl"
-          >
-
+          {/* Map iframe */}
+          <div className="w-full h-96 rounded-xl overflow-hidden shadow-sm border border-gray-200">
             <iframe
-              src={`https://maps.google.com/maps?${showDirections && userLocation
-                ? `saddr=${encodeURIComponent(userLocation)}&daddr=Óptima-Corretora+de+Seguros+SA,+Edificio+154,+R.+Cmte.+Kwenha,+Luanda`
-                : `q=Óptima-Corretora+de+Seguros+SA,+Edificio+154,+R.+Cmte.+Kwenha,+Luanda`
-                }&t=${mapType}&z=${showDirections ? 13 : 17}&ie=UTF8&iwloc=A&output=embed`}
+              src={`https://www.google.com/maps/embed/v1/place?key=YOUR_GOOGLE_MAPS_API_KEY&q=Óptima-Corretora-de-Seguros-Luanda&maptype=${mapType}`}
               width="100%"
               height="100%"
               style={{ border: 0 }}
@@ -472,12 +463,12 @@ ${formData.message}`;
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Extraordinary CTA */}
-      <UltimateCTASection hideSecondaryAction={true} />
+      {/* Ultimate CTA Section */}
+      <UltimateCTASection />
     </div>
   )
 }
