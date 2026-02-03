@@ -82,11 +82,11 @@ ${formData.message}`
 
     if (isMobile()) {
       // Mobile → app de email padrão
-      const mailtoLink = `mailto:geral@optima.co.ao?subject=${subject}&body=${body}`
+      const mailtoLink = `mailto:cotacao@optima.co.ao?subject=${subject}&body=${body}`
       window.location.href = mailtoLink
     } else {
       // Desktop → Gmail Web
-      const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=geral@optima.co.ao&su=${subject}&body=${body}`
+      const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=cotacao@optima.co.ao&su=${subject}&body=${body}`
       window.open(gmailLink, "_blank")
     }
 
@@ -308,10 +308,10 @@ ${formData.message}`
                   <h3 className="text-xl font-bold text-[#1D285E] mb-3">Email</h3>
                   <p className="text-[#1D285E]/70 mb-4">Enviamos resposta em até 24 horas</p>
                   <a
-                    href="mailto:geral@optima.co.ao"
+                    href="mailto:cotacao@optima.co.ao"
                     className="inline-block text-[#676B49] font-semibold hover:opacity-70 transition-opacity"
                   >
-                    geral@optima.co.ao
+                    cotacao@optima.co.ao
                   </a>
                 </motion.div>
 
