@@ -455,7 +455,7 @@ ${formData.message}`
           {/* Map iframe */}
           <div className="w-full h-96 rounded-xl overflow-hidden shadow-sm border border-gray-200">
             <iframe
-              src={`https://www.google.com/maps/embed/v1/place?key=YOUR_GOOGLE_MAPS_API_KEY&q=Óptima-Corretora-de-Seguros-Luanda&maptype=${mapType}`}
+              src={`https://maps.google.com/maps?q=Óptima%20Corretora%20de%20Seguros%20Luanda%20Angola&output=embed${mapType === "k" ? "&t=k" : mapType === "p" ? "&t=h" : ""}`}
               width="100%"
               height="100%"
               style={{ border: 0 }}
