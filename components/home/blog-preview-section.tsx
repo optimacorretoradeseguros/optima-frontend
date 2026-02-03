@@ -3,18 +3,16 @@
 import Link from "next/link"
 import Image from "next/image"
 import { motion, Variants } from "framer-motion"
-import { ArrowRight, Calendar, Clock } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import SectionHeader from "@/components/section-header"
 
 interface Post {
   id: string
-  title: string
-  category: string
-  readTime: string
-  date: string
-  excerpt: string
-  slug: string
-  thumbnail: {
+  tituloDoPost: string
+  categoriaDoPost: string[]
+  resumoDoPost: string
+  slugDoPost: string
+  fotoDeCapa: {
     url: string
   }
 }
@@ -48,16 +46,6 @@ const itemVariants: Variants = {
 
 export default function BlogPreviewSection({ posts }: BlogPreviewSectionProps) {
   // Use posts passed from parent. If empty, section might be empty or hidden, but for now assuming data.
-  // Helper to format date if needed, but assuming string from API or formatting it here?
-  // The API returns date string.
-
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('pt-PT', {
-      day: 'numeric',
-      month: 'short',
-      year: 'numeric'
-    })
-  }
 
   return (
     <section className="py-20 md:py-28 bg-linear-to-br from-white via-[#F8F9FA] to-[#DDDED3]/30">
@@ -84,10 +72,10 @@ export default function BlogPreviewSection({ posts }: BlogPreviewSectionProps) {
               <div className="bg-white rounded-4xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-[#1D285E]/5 hover:border-[#676B49]/20 overflow-hidden h-full flex flex-col">
                 {/* Imagem/Thumbnail */}
                 <div className="relative h-48 bg-[#1D285E] overflow-hidden">
-                  {post.thumbnail && (
+                  {post.fotoDeCapa && (
                     <Image
-                      src={post.thumbnail.url}
-                      alt={post.title}
+                      src={post.fotoDeCapa.url}
+                      alt={post.tituloDoPost}
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-110"
                     />
@@ -96,37 +84,28 @@ export default function BlogPreviewSection({ posts }: BlogPreviewSectionProps) {
 
                   <div className="absolute top-4 left-4 z-10">
                     <span className="bg-white/90 text-[#1D285E] text-xs font-medium px-3 py-1 rounded-full backdrop-blur-sm">
-                      {post.category}
+                      {post.categoriaDoPost?.[0] || 'Geral'}
                     </span>
                   </div>
                   <div className="absolute bottom-4 left-4 right-4 z-10">
-                    <div className="flex items-center gap-4 text-white/90 text-xs font-medium">
-                      <div className="flex items-center gap-1">
-                        <Calendar className="w-3 h-3" />
-                        {formatDate(post.date)}
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Clock className="w-3 h-3" />
-                        {post.readTime || "5 min"}
-                      </div>
-                    </div>
+                    {/* Date and read time removed */}
                   </div>
                 </div>
 
                 {/* Conteúdo */}
                 <div className="p-6 flex flex-col grow">
                   <h3 className="font-bold text-[#1D285E] text-lg mb-3 group-hover:text-[#676B49] transition-colors duration-300 line-clamp-2">
-                    {post.title}
+                    {post.tituloDoPost}
                   </h3>
 
                   <p className="text-[#1D285E]/70 text-sm mb-6 leading-relaxed line-clamp-3">
-                    {post.excerpt}
+                    {post.resumoDoPost}
                   </p>
 
                   {/* CTA */}
                   <div className="mt-auto">
                     <Link
-                      href={`/blog/${post.slug}`}
+                      href={`/blog/${post.slugDoPost}`}
                       className="inline-flex items-center gap-2 text-[#676B49] font-semibold text-sm group-hover:gap-3 transition-all duration-300"
                     >
                       Ler Artigo Completo

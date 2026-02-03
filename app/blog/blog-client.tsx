@@ -10,17 +10,15 @@ import UltimateCTASection from "@/components/home/ultimate-cta-section"
 // Tipos para os posts do Hygraph
 export interface HygraphPost {
     id: string
-    title: string
-    slug: string
-    category: string
-    date: string
-    readTime: string
-    thumbnail?: {
+    tituloDoPost: string
+    slugDoPost: string
+    categoriaDoPost: string[]
+    fotoDeCapa?: {
         url: string
     }
-    excerpt: string
-    content: {
-        raw: string
+    resumoDoPost: string
+    conteudoDoPost: {
+        text: string
     }
 }
 
@@ -65,20 +63,20 @@ export default function BlogClient({ initialPosts }: BlogClientProps) {
     const posts = initialPosts || []
 
     // Extrair categorias únicas dos posts (ensure posts exists)
-    const categories = ["Todos", ...new Set(posts.map((post) => post?.category).filter(Boolean))]
+    const categories = ["Todos", ...new Set(posts.flatMap((post) => post?.categoriaDoPost || []).filter(Boolean))]
 
     // Filtrar posts baseado na pesquisa e categoria
     const filteredPosts = posts.filter((post) => {
         if (!post) return false
 
         const term = searchTerm.toLowerCase().trim()
-        const matchesCategory = selectedCategory === "Todos" || post.category === selectedCategory
+        const matchesCategory = selectedCategory === "Todos" || (post.categoriaDoPost && post.categoriaDoPost.includes(selectedCategory))
 
         if (!term) return matchesCategory
 
         const matchesSearch =
-            (post.title?.toLowerCase() || "").includes(term) ||
-            (post.excerpt?.toLowerCase() || "").includes(term)
+            (post.tituloDoPost?.toLowerCase() || "").includes(term) ||
+            (post.resumoDoPost?.toLowerCase() || "").includes(term)
 
         return matchesSearch && matchesCategory
     })
@@ -227,14 +225,14 @@ export default function BlogClient({ initialPosts }: BlogClientProps) {
                                 whileHover={{ y: -8, transition: { duration: 0.3, ease: "easeOut" } }}
                                 className="group"
                             >
-                                <Link href={`/blog/${post.slug}`}>
+                                <Link href={`/blog/${post.slugDoPost}`}>
                                     <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-[#1D285E]/5 hover:border-[#676B49]/20 overflow-hidden h-full">
                                         {/* Thumbnail */}
                                         <div className="relative h-48 overflow-hidden">
-                                            {post.thumbnail?.url ? (
+                                            {post.fotoDeCapa?.url ? (
                                                 <img
-                                                    src={post.thumbnail.url}
-                                                    alt={post.title || 'Artigo do Blog'}
+                                                    src={post.fotoDeCapa.url}
+                                                    alt={post.tituloDoPost || 'Artigo do Blog'}
                                                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                                 />
                                             ) : (
@@ -242,21 +240,12 @@ export default function BlogClient({ initialPosts }: BlogClientProps) {
                                             )}
                                             <div className="absolute top-4 left-4">
                                                 <span className="bg-white/90 text-[#1D285E] text-xs font-medium px-3 py-1 rounded-full">
-                                                    {post.category || 'Geral'}
+                                                    {post.categoriaDoPost?.[0] || 'Geral'}
                                                 </span>
                                             </div>
                                             <div className="absolute bottom-4 left-4 right-4">
                                                 <div className="flex items-center gap-4 text-white/80 text-xs">
-                                                    <div className="flex items-center gap-1">
-                                                        <Calendar className="w-3 h-3" />
-                                                        {formatDate(post.date)}
-                                                    </div>
-                                                    {post.readTime && (
-                                                        <div className="flex items-center gap-1">
-                                                            <Users className="w-3 h-3" />
-                                                            {post.readTime}
-                                                        </div>
-                                                    )}
+                                                    {/* Date and read time removed as not in query */}
                                                 </div>
                                             </div>
                                         </div>
@@ -264,11 +253,11 @@ export default function BlogClient({ initialPosts }: BlogClientProps) {
                                         {/* Content */}
                                         <div className="p-6">
                                             <h3 className="font-bold text-[#1D285E] text-lg mb-3 group-hover:text-[#676B49] transition-colors duration-300 line-clamp-2">
-                                                {post.title || 'Sem título'}
+                                                {post.tituloDoPost || 'Sem título'}
                                             </h3>
 
                                             <p className="text-[#1D285E]/70 text-sm mb-4 leading-relaxed line-clamp-2">
-                                                {post.excerpt || ''}
+                                                {post.resumoDoPost || ''}
                                             </p>
 
                                             {/* CTA */}

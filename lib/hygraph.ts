@@ -19,19 +19,17 @@ export async function fetchPosts() {
       body: JSON.stringify({
         query: `
         query Posts {
-          posts(orderBy: date_DESC) {
+          posts(first: 100) {
             id
-            title
-            slug
-            category
-            date
-            readTime
-            thumbnail {
+            tituloDoPost
+            slugDoPost
+            categoriaDoPost
+            fotoDeCapa {
               url
             }
-            excerpt
-            content {
-              raw
+            resumoDoPost
+            conteudoDoPost{
+              text
             }
           }
         }
@@ -66,19 +64,17 @@ export async function fetchPostBySlug(slug: string) {
       body: JSON.stringify({
         query: `
           query PostBySlug($slug: String!) {
-            post(where: { slug: $slug }) {
+            post(where: { slugDoPost: $slug }) {
               id
-              title
-              slug
-              category
-              date
-              readTime
-              thumbnail {
+              tituloDoPost
+              slugDoPost
+              categoriaDoPost
+              fotoDeCapa {
                 url
               }
-              excerpt
-              content {
-                raw
+              resumoDoPost
+              conteudoDoPost{
+                text
               }
             }
           }

@@ -18,7 +18,25 @@ function childrenToCode(children: any) {
 }
 
 export default function HygraphRichText({ content }: Props) {
-  if (!content?.raw) return null
+  if (!content?.raw && !content?.text) return null
+
+  if (content.text) {
+    // If it's plain text, render as paragraphs
+    return (
+      <div className="prose prose-lg prose-slate max-w-none">
+        {content.text.split('\n\n').map((paragraph: string, index: number) => (
+          <p key={index} className="mb-4 leading-7 text-gray-800 dark:text-gray-100">
+            {paragraph.split('\n').map((line: string, lineIndex: number) => (
+              <span key={lineIndex}>
+                {line}
+                {lineIndex < paragraph.split('\n').length - 1 && <br />}
+              </span>
+            ))}
+          </p>
+        ))}
+      </div>
+    )
+  }
 
   const options = {
     renderers: {

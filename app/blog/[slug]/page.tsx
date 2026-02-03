@@ -39,10 +39,10 @@ export default async function Page({ params }: Props) {
     <main className="min-h-screen bg-white">
       {/* Cinematic Hero Section */}
       <section className="relative h-[50vh] lg:h-[70vh] w-full overflow-hidden">
-        {post.thumbnail?.url ? (
+        {post.fotoDeCapa?.url ? (
           <Image
-            src={post.thumbnail.url}
-            alt={post.title}
+            src={post.fotoDeCapa.url}
+            alt={post.tituloDoPost}
             fill
             priority
             className="object-cover transition-transform duration-1000 scale-105"
@@ -71,26 +71,17 @@ export default async function Page({ params }: Props) {
             <div className="max-w-4xl">
               <div className="flex items-center gap-3 mb-6">
                 <span className="bg-[#676B49] text-white text-xs font-black px-3 py-1 rounded-full uppercase tracking-widest shadow-lg">
-                  {post.category || 'Seguros'}
+                  {post.categoriaDoPost?.[0] || 'Seguros'}
                 </span>
                 <div className="h-px w-12 bg-white/30" />
               </div>
 
               <h1 className="text-2xl sm:text-3xl lg:text-7xl font-black text-white mb-6 md:mb-8 leading-[1.1] tracking-tight drop-shadow-2xl">
-                {post.title}
+                {post.tituloDoPost}
               </h1>
 
               <div className="flex flex-wrap items-center gap-6 gap-y-4 text-white/90 mb-8">
-                <div className="flex items-center gap-2 backdrop-blur-md bg-white/5 px-4 py-2 rounded-2xl border border-white/10">
-                  <Calendar className="w-4 h-4 text-[#676B49]" />
-                  <span className="text-sm font-medium">{formatDate(post.date)}</span>
-                </div>
-                {post.readTime && (
-                  <div className="flex items-center gap-2 backdrop-blur-md bg-white/5 px-4 py-2 rounded-2xl border border-white/10">
-                    <Clock className="w-4 h-4 text-[#676B49]" />
-                    <span className="text-sm font-medium">{post.readTime} min de leitura</span>
-                  </div>
-                )}
+                {/* Date and read time removed as not in query */}
               </div>
             </div>
           </div>
@@ -103,10 +94,10 @@ export default async function Page({ params }: Props) {
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-12">
             {/* Main Content */}
             <div className="bg-white rounded-3xl p-6 md:p-16 shadow-2xl shadow-[#1D285E]/5">
-              {post.excerpt && (
+              {post.resumoDoPost && (
                 <div className="mb-12">
                   <p className="text-xl md:text-2xl font-semibold text-[#1D285E] leading-relaxed italic border-l-4 border-[#676B49] pl-6">
-                    {post.excerpt}
+                    {post.resumoDoPost}
                   </p>
                 </div>
               )}
@@ -118,7 +109,7 @@ export default async function Page({ params }: Props) {
                 prose-img:rounded-3xl prose-img:shadow-xl
                 prose-a:text-[#676B49] prose-a:no-underline hover:prose-a:underline
               ">
-                <HygraphRichText content={post.content} />
+                <HygraphRichText content={post.conteudoDoPost} />
               </article>
             </div>
 
