@@ -142,7 +142,7 @@ export default function Footer() {
                 <div className="p-2 bg-[#283373] rounded-lg">
                   <Mail size={16} className="text-white" />
                 </div>
-                <span>geral@optima.co.ao</span>
+                <span>cotacao@optima.co.ao</span>
               </motion.li>
 
               {/* Telefones com mesmo tamanho */}
