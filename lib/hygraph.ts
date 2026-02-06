@@ -29,7 +29,7 @@ export async function fetchPosts() {
             }
             resumoDoPost
             conteudoDoPost{
-              text
+              raw
             }
           }
         }
@@ -74,7 +74,7 @@ export async function fetchPostBySlug(slug: string) {
               }
               resumoDoPost
               conteudoDoPost{
-                text
+                raw
               }
             }
           }
